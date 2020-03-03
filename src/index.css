@@ -1,0 +1,63 @@
+html{
+  min-height: 100%;
+}
+
+body {
+  margin: 2px;
+  padding: 2px;
+  font-family: initial;
+  font-size: small;
+ /* background: url(/img/board.jpg) no-repeat;*/
+  background-size: 100% 110%;
+  
+  background-position: 0% -5%;
+  background-color: #fffcfc;
+  min-height: 99%;
+}
+.bg-img{
+   /* background: url(/img/board.jpg) no-repeat;*/
+}
+
+span { margin: 3px;}
+.container{
+  margin: 10;
+  padding: 5;
+  width:95%
+}
+.card-content {
+  padding: 0px ;
+  margin: 2px 0; 
+}
+.card .card-content{
+  padding: 2px ;
+}
+.card-panel {
+  padding: 5px ;
+  margin: 2px 2px; 
+  text-align: left;
+  
+}
+form{
+  padding: 10px;
+  margin-top: 6px;
+}
+
+form button, form h5{
+  margin: 6px 0;
+}
+
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #ec407a;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #ec407a !important;
+}
