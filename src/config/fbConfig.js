@@ -4,6 +4,7 @@ import 'firebase/auth';
 
 // Replace this with your own config details
 var config = {
+  
   apiKey: "AIzaSyDNRtpa86v986mO3pePPursUW1XtahmrDo",
   authDomain: "gfem-b7b57.firebaseapp.com",
   databaseURL: "https://gfem-b7b57.firebaseio.com",

@@ -74,7 +74,7 @@ class CreateNotice extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container section project-editing">
-        <h3>New Notice   </h3>
+        <h3>New NEWS   </h3>
         <div className="bg-img"> </div>
         <form className="black" onSubmit={this.handleSubmit}>
           <div className="card z-depth-0">

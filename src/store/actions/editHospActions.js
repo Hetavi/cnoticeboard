@@ -10,7 +10,8 @@ export const editHospActions = (project) => {
         ...project,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
-        authorId: authorId
+        authorId: authorId,
+        createdAt: new Date()
       }, { merge: true }).then(() => {
         dispatch({ type: 'EDIT_hosp_SUCCESS' });
       }).catch(err => {

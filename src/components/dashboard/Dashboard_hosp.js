@@ -5,12 +5,10 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import HospSummary from '../projects/hospSummary'
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-   
       showing: true,
       days: '',
       t1: '',
@@ -26,33 +24,39 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
-    const { hosp_props, err, auth, value } = this.props;
+    const { hosp_props, err, auth, value,profile } = this.props;
+    console.log(profile)
     if (hosp_props) {
       let hosp_array = this.props.hosp_props.filter(
         (hosp_elements) => {
-          return hosp_elements.city.indexOf(this.state.value) !== -1 ||
-          hosp_elements.hospName.indexOf(this.state.value) !== -1 ||
-          hosp_elements.sp.indexOf(this.state.value) !== -1 
+          return hosp_elements.city.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
+            hosp_elements.hospName.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
+            hosp_elements.sp.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1
         }
       )
       return (
         <div className="dashboard container">
-          <div className="col s12">
-            <h5 >
-              <font color="yellow" >Search   </font>
-              <div className="input-field inline">
-                <input id="search" type="text" value={value} onChange={this.handleChange} />
-                <label htmlFor="search" ><h6><font color="white">City/Name/Specility</font></h6></label>
-              </div>
-             </h5>
+          <div className="col s6">
+            <font color="blue" >Search   </font>
+            <div className="input-field inline">
+              <input id="search" type="text" value={value} onChange={this.handleChange} />
+              <label htmlFor="search" ><font color="black">City/Name/Specility</font></label>
+            </div>
           </div>
           <div className="col s6 m6">
             {hosp_array.map(sigle_hosp => {
               if (auth.uid) {
-                return ( <Link to={'/edit_hosp/' + sigle_hosp.id} key={sigle_hosp.id}>
-                   < HospSummary passing_hosp={sigle_hosp} />
-                   </Link>
-                 
+                return (
+                  
+                  <Link to={'/edit_hosp/' + sigle_hosp.id} key={sigle_hosp.id}>
+                  < HospSummary passing_hosp={sigle_hosp} />
+                  </Link>
+                )
+              } else {
+                return (
+                  <Link to={'/edit_hosp/' + sigle_hosp.id} key={sigle_hosp.id}>
+                    < HospSummary passing_hosp={sigle_hosp} />
+                  </Link>
                 )
               }
             })
@@ -62,9 +66,8 @@ class Dashboard extends Component {
       )
     }
     else {
-      return(
+      return (
         <div>Please wait.....</div>
-        
       )
     }
   }
@@ -80,13 +83,13 @@ const mapStateToProps = (state) => {
     hosp_props: state.firestore.ordered.hosp,
     auth: state.firebase.auth,
     dayname: dayname,
-    t1: t1
+    profile: state.firebase.profile
   }
 }
 export default compose(
   connect(mapStateToProps),
   firestoreConnect(() => [
-     { collection: 'hosp' }
+    { collection: 'hosp' }
     //{ collection: 'notice', where: [['visitday', 'array-contains', props.dayname]] }
   ])
 )(Dashboard)

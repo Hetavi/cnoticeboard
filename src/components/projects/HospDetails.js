@@ -40,11 +40,11 @@ class HospDetails extends Component {
     e.preventDefault();
     console.log(this.state.displayon)
     this.props.editHospActions(this.state);
-    this.props.history.push('/');
+    this.props.history.push('/dash_hosp');
   }
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
-    //if (project) {xx
+   
     console.log(this.props)
     console.log('this.state')
     return (
@@ -64,11 +64,11 @@ class HospDetails extends Component {
           <label  className="grey-text text-darken-3 active" htmlFor="sp">Speciality</label>
         </div>
         <div className="row col s12 ">
-          <div className='input-field col s4'>
+          <div className='input-field col s6'>
             <input type="number" id='phone1' defaultValue={this.state.phone1} onChange={this.handleChange} />
             <label  className="grey-text text-darken-3 active" htmlFor="phone1">Phone 1</label>
           </div>
-          <div className='input-field col s4'>
+          <div className='input-field col s6'>
             <input type="number" id='phone2' defaultValue={this.state.phone2} onChange={this.handleChange} />
             <label  className="grey-text text-darken-3 active" htmlFor="phone2">Phone 2</label>
           </div>

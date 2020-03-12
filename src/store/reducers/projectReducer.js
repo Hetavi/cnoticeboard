@@ -19,7 +19,12 @@ const projectReducer = (state = initState, action) => {
       case 'CREATE_Visiting_ERROR':
         console.log('CREATE_Visiting_ERROR');
         return state;
-
+        case 'EDIT_DR_SUCCESS':
+          console.log('EDIT DR success');
+          return state;
+        case 'EDIT_DR_ERROR':
+          console.log('EDIT DR error');
+          return state;
 
 
 

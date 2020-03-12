@@ -10,7 +10,8 @@ class NoticeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dept: this.props.project.dept,
+     
+       dept: this.props.project.dept,
       title: this.props.project.title,
       Body1: this.props.project.Body1,
       Body2: this.props.project.Body2,
@@ -20,6 +21,7 @@ class NoticeDetails extends Component {
       displayon: this.props.project.displayon
     }
   }
+ 
   handleChange = (e) => {
     console.log(this.state.data)
     this.setState({
@@ -41,14 +43,15 @@ class NoticeDetails extends Component {
     this.props.editNoticeActions(this.state);
     this.props.history.push('/');
   }
+ 
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
-    //if (project) {xx
-    console.log(this.props)
+  
+    console.log(this.props.auth.id)
     console.log('this.state')
     return (
-      <div className="container section project-editing">
-        {this.props.auth.uid ? <h3>Edit Notice</h3> : <h3>Notice</h3>}
+      <div disable className="container section project-editing">
+        {this.props.auth.uid ? <h3>Edit NEWS</h3> : <h3>NEWS</h3>}
         <form className="black" onSubmit={this.handleSubmit}>
           <div className="card z-depth-0">
             <div className="card-content" style={{ padding: '0px' }}>
@@ -57,7 +60,7 @@ class NoticeDetails extends Component {
                   <input id="displayon" type="checkbox" checked={this.state.displayon} className='filled-in' onChange={this.handlecheckbox} />
                   <span>Display On</span>
                 </label>
-                <span style={{ padding: '0px' }} className="col s6"> Dept:{this.props.project.dept}  </span>
+                <span  style={{ padding: '0px' }} className="col s6"> Dept:{this.props.project.dept}  </span>
               </div>
             </div>
             <div className="row"> <h5 className='col s2' htmlFor="title">Title</h5>
@@ -99,8 +102,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{
-    collection: 'projects'
-  }])
+  connect(mapStateToProps, mapDispatchToProps)
+  
 )(NoticeDetails)

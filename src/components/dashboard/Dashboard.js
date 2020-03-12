@@ -1,28 +1,36 @@
 import React, { Component } from 'react'
 import ProjectList from '../projects/ProjectList'
-import Notifications from './Notifications'
 import DrList from '../projects/DrList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'mon'
+    }
+  }
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState({ value });
+  };
   render() {
-    const { projects, VisitingDr,auth, notifications,dayname } = this.props;
-  
-    console.log(dayname )
-   
+    const { projects, VisitingDr, auth, notifications, dayname } = this.props;
+    console.log(dayname)
     console.log('VisitingDr')
-
-   // if (!auth.uid) return <Redirect to='/signin' /> 
+  const link1=VisitingDr? <DrList VisitingDr={VisitingDr} />:<p>Please wait..</p>
+  const link2=projects?  <ProjectList projects={projects} />:<p>Please wait..</p>
+    // if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="col s12 m6">
-            <ProjectList projects={projects} />
+          <div  className="col s12 m5 ">
+           {/* <DrList VisitingDr={VisitingDr} />*/}
+            {link1}
           </div>
-          <div className="col s12 m5 offset-m1">
-          <DrList VisitingDr={VisitingDr} />
+          <div  className="col s12 m6">
+           {link2}
           </div>
         </div>
       </div>
@@ -36,17 +44,18 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     projects: state.firestore.ordered.notice,
-    VisitingDr:state.firestore.ordered.VisitingDr,
+    VisitingDr: state.firestore.ordered.VisitingDr,
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
-    dayname: dayname
+    dayname: dayname,
+    value: dayname
   }
 }
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect((props) =>[
-    { collection: 'notice', where: [['displayon', '==', true]]},
-    { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.dayname]]},
-    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
+  firestoreConnect((state) => [
+    { collection: 'notice', where: [['displayon', '==', true]] },
+    { collection: 'VisitingDr', where: [['visitday', 'array-contains', state.value]] },
+    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] }
   ])
 )(Dashboard)

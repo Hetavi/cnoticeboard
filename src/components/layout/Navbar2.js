@@ -1,24 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SignedInLinks from './SignedInLinks'
-import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
-
 const Navbar2 = (props) => {
-  
   return (
-    <nav className="nav grey darken-1" >
-       <ul className="left">
-       <li><Link to='/'>Home</Link></li> 
-     <li><Link to='/edit'>Drs</Link></li> 
-     <li><Link to='/signin'>Hosp</Link></li> 
-     <li><Link to='/signin'>Club</Link></li> 
-     <li> <Link to='/signin'>sale</Link></li>
+    <nav style={{lineHeight:1.2,height:20}}>
+       <ul className="left" >
+     <li ><Link to='/dr'>+Dr</Link></li> 
+     <li ><Link to='/hosp'>+Hosp</Link></li> 
+     <li > <Link to='/create'>+NEWS</Link></li>
+     <li > <Link to='/'>+Adv</Link></li>
+     <li > <Link to='/'>Profile</Link></li>
     </ul>
     </nav>
   )
 }
-
-
-
 export default Navbar2

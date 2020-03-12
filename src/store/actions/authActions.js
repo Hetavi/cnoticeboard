@@ -36,6 +36,8 @@ export const signUp = (newUser) => {
     provider.addScope('email');
     firebase.auth().signInWithPopup(provider).then(resp => {
       return firestore.collection('users').doc(resp.user.uid).set({
+        Dept:newUser.Dept,
+        Mobile:newUser.Mobile,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: newUser.firstName[0] + newUser.lastName[0]

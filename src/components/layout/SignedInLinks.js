@@ -3,15 +3,15 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 const SignedInLinks = (props) => {
+  const { auth, profile } = props;
   return (
     <div>
       {console.log(props.profile)}
       <ul className="right">
-        <li><NavLink to='/old'>Old Notices</NavLink></li>
-        <li><NavLink to='/create'>+Notice</NavLink></li>
-        <li><NavLink to='/hosp'>+Hosp </NavLink></li>
-        <li><NavLink to='/dr'>+dr </NavLink></li>
-        <li><a onClick={props.signOut}> {props.profile.firstName}</a></li>
+        <li><NavLink to='/dash_hosp'><b>Hsop</b></NavLink></li>
+        <li><NavLink to='/dash_dr'><b>Dr.s</b></NavLink></li>
+        <li><NavLink to='/'><b>Profile</b></NavLink></li>
+        {<li><a onClick={props.signOut}>Logout </a></li>}
         {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">
           {props.profile.initials}
   </NavLink></li>*/}

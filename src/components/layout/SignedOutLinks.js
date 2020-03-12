@@ -6,12 +6,11 @@ const SignedOutLinks = (props) => {
   return (
     <div>
       <ul className="right">
-      
-  {/*<li><NavLink to='/signUp'>Sign up</NavLink></li>*/ } 
-      
-       <li><a onClick={props.signIn}>G-Login</a></li>
-       <li><NavLink to='/signup'>New SignUp</NavLink></li>
-       
+        {/*<li><NavLink to='/signUp'>Sign up</NavLink></li>*/}
+        <li><NavLink to='/dash_hosp'><b>Hsop</b></NavLink></li>
+        <li><NavLink to='/dash_dr'>Drs</NavLink></li>
+        <li><NavLink to='/dash_dir'>Dir</NavLink></li>
+        <li><a onClick={props.signIn}>Login</a></li>
       </ul>
     </div>
   )
@@ -21,6 +20,4 @@ const mapDispatchToProps = (dispatch) => {
     signIn: () => dispatch(signIn())
   }
 }
-
 export default connect(null, mapDispatchToProps)(SignedOutLinks)
-
