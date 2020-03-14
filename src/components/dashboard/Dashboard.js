@@ -16,9 +16,10 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
-    const { projects, VisitingDr, auth, notifications, dayname } = this.props;
+    const {profile,auth, projects, VisitingDr, notifications, dayname } = this.props;
+    console.log(projects)
     console.log(dayname)
-    console.log('VisitingDr')
+    console.log('profile')
   const link1=VisitingDr? <DrList VisitingDr={VisitingDr} />:<p>Please wait..</p>
   const link2=projects?  <ProjectList projects={projects} />:<p>Please wait..</p>
     // if (!auth.uid) return <Redirect to='/signin' /> 
@@ -41,21 +42,24 @@ const mapStateToProps = (state) => {
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
-  // console.log(state);
+  // how to where more than one onsitions ? for sbscription of various notice
   return {
     projects: state.firestore.ordered.notice,
     VisitingDr: state.firestore.ordered.VisitingDr,
     auth: state.firebase.auth,
+    profile:state.firebase.profile,
     notifications: state.firestore.ordered.notifications,
     dayname: dayname,
+    depts:['meth2','sport'],
     value: dayname
   }
 }
 export default compose(
   connect(mapStateToProps),
   firestoreConnect((state) => [
-    { collection: 'notice', where: [['displayon', '==', true]] },
+  { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
     { collection: 'VisitingDr', where: [['visitday', 'array-contains', state.value]] },
-    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] }
-  ])
+    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] } 
+  ]
+  )
 )(Dashboard)

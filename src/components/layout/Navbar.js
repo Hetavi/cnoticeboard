@@ -11,7 +11,7 @@ const Navbar = (props) => {
   return (
     <div>
     <nav style={{lineHeight:1.3,height:40}} className="nav-wrapper grey darken-3" >
-      <Link to='/' className="brand-logo left">gFam </Link>
+      <Link to='/' className="brand-logo left">Home </Link>
       {links}
     </nav>
     {links2}

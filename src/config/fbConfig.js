@@ -4,14 +4,13 @@ import 'firebase/auth';
 
 // Replace this with your own config details
 var config = {
-  
-  apiKey: "AIzaSyDNRtpa86v986mO3pePPursUW1XtahmrDo",
-  authDomain: "gfem-b7b57.firebaseapp.com",
-  databaseURL: "https://gfem-b7b57.firebaseio.com",
-  projectId: "gfem-b7b57",
-  storageBucket: "gfem-b7b57.appspot.com",
-  messagingSenderId: "144283479484",
-  appId: "1:144283479484:web:6860f178f587058f9acfb9"
+  apiKey: "AIzaSyBF7m7VhZSwUCH_U5NbnOvkNcyVV3At4Nc",
+  authDomain: "marubharuch.firebaseapp.com",
+  databaseURL: "https://marubharuch.firebaseio.com",
+  projectId: "marubharuch",
+  storageBucket: "marubharuch.appspot.com",
+  messagingSenderId: "307625591423",
+  appId: "1:307625591423:web:7e783b81ed5aba4f"
 };
 firebase.initializeApp(config);
 

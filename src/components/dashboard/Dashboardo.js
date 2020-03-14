@@ -25,10 +25,10 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
-    const { projects, drlist, err, auth, value } = this.props;
+    const { profile, projects, drlist, err, auth, value } = this.props;
     console.log(this.state.auth)
-    console.log(drlist)
-    console.log('auth')
+    console.log(profile)
+    console.log('profile')
     //if (!projects) return <Redirect to='/edit' />  
    
     if (projects) {
