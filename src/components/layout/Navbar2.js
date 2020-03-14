@@ -9,7 +9,7 @@ const Navbar2 = (props) => {
      <li ><Link to='/hosp'>+Hosp</Link></li> 
      <li > <Link to='/create'>+NEWS</Link></li>
      <li > <Link to='/'>+Adv</Link></li>
-     <li > <Link to='/'>Profile</Link></li>
+     <li > <Link to='/signUp'>Profile</Link></li>
     </ul>
     </nav>
   )

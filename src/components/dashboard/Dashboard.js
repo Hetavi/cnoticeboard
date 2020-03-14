@@ -4,6 +4,8 @@ import DrList from '../projects/DrList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Youtube from './Youtube'
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,9 @@ class Dashboard extends Component {
     // if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
+        <div>Space for news clip
+          <Youtube movie={dayname}/>
+        </div>
         <div className="row">
           <div  className="col s12 m5 ">
            {/* <DrList VisitingDr={VisitingDr} />*/}
@@ -49,7 +54,7 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     profile:state.firebase.profile,
     notifications: state.firestore.ordered.notifications,
-    dayname: dayname,
+    dayname: 'mon',
     depts:['meth2','sport'],
     value: dayname
   }
