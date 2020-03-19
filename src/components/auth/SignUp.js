@@ -10,7 +10,8 @@ class SignUp extends Component {
     firstName:this.props.Profile.firstName ,
     lastName: this.props.Profile.lastName,
     Dept:this.props.Profile.Dept,
-    Mobile:this.props.Profile.Mobile
+    Mobile:this.props.Profile.Mobile,
+    role:this.props.Profile.role
   }
   handleChange = (e) => {
     this.setState({

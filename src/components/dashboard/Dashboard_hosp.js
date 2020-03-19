@@ -40,7 +40,7 @@ class Dashboard extends Component {
             <font color="blue" >Search   </font>
             <div className="input-field inline">
               <input id="search" type="text" value={value} onChange={this.handleChange} />
-              <label htmlFor="search" ><font color="black">City/Name/Specility</font></label>
+              <label htmlFor="search" ><font color="black">City/Name</font></label>
             </div>
           </div>
           <div className="col s6 m6">

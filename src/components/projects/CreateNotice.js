@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { generateNotice } from '../../store/actions/noticeActions'
 import { Redirect } from 'react-router-dom'
 import firebase from "firebase";
-import FileUploader from "react-firebase-file-uploader";
-import DatePicker from 'react-date-picker';
+//import FileUploader from "react-firebase-file-uploader";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 class CreateNotice extends Component {
   state = {
     dept: '',
@@ -14,12 +15,22 @@ class CreateNotice extends Component {
     Body3: '',
     displayon: true,
     startDate: new Date(),
+    endDate: new Date(),
     filenames: [],
     downloadURLs: [],
     isUploading: false,
     uploadProgress: 0
   }
- 
+  handleDate = date => {
+    this.setState({
+      startDate: date
+    });
+  };
+  handleDate_end = date => {
+    this.setState({
+      endDate: date
+    });
+  };
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -38,7 +49,7 @@ class CreateNotice extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.generateNotice(this.state);
-    this.props.history.push('/');
+    this.props.history.push('/admin');
   }
   handleUploadStart = () =>
     this.setState({
@@ -74,26 +85,38 @@ class CreateNotice extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container section project-editing">
-        <h3>New NEWS   </h3>
+        <h3>Add NEWS   </h3>
         <div className="bg-img"> </div>
         <form className="black" onSubmit={this.handleSubmit}>
           <div className="card z-depth-0">
             <div className="card-content" style={{ padding: '2px' }}>
-              <label>
-                <input id="displayon" type="checkbox" className='filled-in' onChange={this.handlecheckbox} />
-                <span>Display On</span>
-              </label>-
-              <div>
-        
-      </div>
+              <div> <h6>Display from </h6>
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.handleDate}
+                  showTimeSelect
+                  dateFormat=" d -MM -yyyy h:mm aa"
+                />
+              </div>
+              <div> <h6>Display to</h6>
+                   <DatePicker
+                  selected={this.state.endDate}
+                  onChange={this.handleDate_end}
+                  showTimeSelect
+                  dateFormat="Pp"
+                />
+              </div>
             </div>
             <div className="input-field ">
               <input type="text" id='dept' onChange={this.handleChange} />
-              <label htmlFor="dept">Department</label></div>
+              <label htmlFor="dept">Department</label>
+              </div>
             <div className="input-field ">
               <input type="text" id='title' onChange={this.handleChange} />
-              <label htmlFor="title">title</label></div>
-            <div>
+              <label htmlFor="title">Title</label>
+              </div>
+              {/* following for future use */}
+            {/*<div>
               <FileUploader
                 accept="image/*"
                 name="image-uploader"
@@ -111,10 +134,10 @@ class CreateNotice extends Component {
                   return <img class="responsive-img" key={i} src={downloadURL} />;
                 })}
               </div>
-            </div>
+            </div>*/}
             <div className="input-field ">
               <textarea id='Body1' style={{ height: '10rem' }} onChange={this.handleChange} />
-              <label htmlFor="Body1">Para-1</label>
+              <label htmlFor="Body1">Detail</label>
             </div>
             <div className="input-field">
               <button className="btn pink lighten-1">Save</button>

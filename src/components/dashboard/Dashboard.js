@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import ProjectList from '../projects/ProjectList'
-import DrList from '../projects/DrList'
+import Gdash from './gDash'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -18,53 +17,25 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
-    const {profile,auth, projects, VisitingDr, notifications, dayname } = this.props;
-    console.log(projects)
-    console.log(dayname)
-    console.log('profile')
-  const link1=VisitingDr? <DrList VisitingDr={VisitingDr} />:<p>Please wait..</p>
-  const link2=projects?  <ProjectList projects={projects} />:<p>Please wait..</p>
+    const {profile } = this.props;
+   
+  const link1=profile.Dept? <Gdash />:<Gdash />
+
     // if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
-        <div>Space for news clip
-          <Youtube movie={dayname}/>
-        </div>
-        <div className="row">
-          <div  className="col s12 m5 ">
-           {/* <DrList VisitingDr={VisitingDr} />*/}
-            {link1}
-          </div>
-          <div  className="col s12 m6">
-           {link2}
-          </div>
-        </div>
+        {link1}
       </div>
     )
   }
 }
 const mapStateToProps = (state) => {
-  let dayn = new Date().getDay()
-  let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
-  const dayname = daynm[dayn]
+ 
   // how to where more than one onsitions ? for sbscription of various notice
   return {
-    projects: state.firestore.ordered.notice,
-    VisitingDr: state.firestore.ordered.VisitingDr,
-    auth: state.firebase.auth,
+   
     profile:state.firebase.profile,
-    notifications: state.firestore.ordered.notifications,
-    dayname: 'mon',
-    depts:['meth2','sport'],
-    value: dayname
+  
   }
 }
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect((state) => [
-  { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
-    { collection: 'VisitingDr', where: [['visitday', 'array-contains', state.value]] },
-    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] } 
-  ]
-  )
-)(Dashboard)
+export default compose(connect(mapStateToProps))(Dashboard)

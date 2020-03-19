@@ -1,46 +1,46 @@
 const initState = {
-  authError: null
-}
+  authError: null,
+  td:Date.now()
 
+}
 const authReducer = (state = initState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case 'LOGIN_ERROR':
       console.log('login error');
-
+      
       return {
         ...state,
         authError: 'Login failed'
       }
-
     case 'LOGIN_SUCCESS':
+      alert('login_sucess')
       console.log('login success');
-      console.log(state)
+     
       return {
         ...state,
         authError: null
       }
-
     case 'SIGNOUT_SUCCESS':
       console.log('signout success');
       return state;
-
     case 'SIGNUP_SUCCESS':
       console.log('signup success')
+   
       return {
         ...state,
         authError: null
       }
-
     case 'SIGNUP_ERROR':
       console.log('signup error')
+     
       return {
         ...state,
         authError: action.err.message
       }
-
     default:
-      return state
+   
+      return {...state}
+     
   }
 };
-
 export default authReducer;

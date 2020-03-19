@@ -13,6 +13,7 @@ class DrList extends Component {
 
         return (
             <div>{links}
+           <div><a href="tel:+912642203090">call 3090(Hosp.)</a></div> 
                 <div  className="Dr-list section card">
                     {this.props.VisitingDr && this.props.VisitingDr.map(project => {
                         return (
