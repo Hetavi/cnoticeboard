@@ -13,8 +13,7 @@ const SignedInLinks = (props) => {
       {console.log(props.profile)}
       <ul className="right">
         {link}
-        <li><NavLink to='/dash_hosp'><b>Hsop</b></NavLink></li>
-        <li><NavLink to='/dash_dr'><b>Dr.s</b></NavLink></li>
+       
         
         <li><a onClick={props.signOut}>Logout </a></li>
         {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">

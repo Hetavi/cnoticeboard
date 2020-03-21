@@ -4,10 +4,10 @@ const NoticeSummary = ({ project}) => {
   console.log()
   
   return (
-    <div className='card' >
-      
-      <span className="black-text" >Dr. <b>{project.name}</b><i>({project.sp})</i>{project.visitHr} </span>
-      <br></br>
+    <div className='card teal lighten-3' >
+     
+      <span className="black-text" >Dr. <b>{project.name}</b>({project.sp}) <br></br> </span>
+     
      {project.visitday[0]?<span>{project.visitday[0]}</span>:null}
      {project.visitday[1]?<span>{project.visitday[1]}</span>:null}
      {project.visitday[2]?<span>{project.visitday[2]}</span>:null}
@@ -15,6 +15,8 @@ const NoticeSummary = ({ project}) => {
      {project.visitday[4]?<span>{project.visitday[4]}</span>:null}
      {project.visitday[5]?<span>{project.visitday[5]}</span>:null}
      {project.visitday[6]?<span>{project.visitday[6]}</span>:null}
+     <span><i>-{project.visitHr}</i></span>
+     
     </div>
   )
 }

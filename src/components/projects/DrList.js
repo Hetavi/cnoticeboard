@@ -6,29 +6,37 @@ class DrList extends Component {
     render() {
         var _queryURL = window.location.href;
         var n = _queryURL.includes("dash_dr");
-        if(this.props.VisitingDr.length>0){
-        const links = !n ? <b><u>Today's Visiting Dr</u></b> : <b>List Of Visiting Dr.</b>;
-        console.log(this.props)
-       
-
-        return (
-            <div>{links}
-           <div><a href="tel:+912642203090">call 3090(Hosp.)</a></div> 
-                <div  className="Dr-list section card">
-                    {this.props.VisitingDr && this.props.VisitingDr.map(project => {
-                        return (
-                            !n ?
-                                <DrSummary project={project} /> :
-                                (<Link to={'/edit_dr/' + project.id} key={project.id}>
-                                    <DrSummaryall project={project} />
-                                </Link>)
-                        )
-                    })}
+        if (this.props.VisitingDr.length > 0) {
+            const links = !n ? <b><u>Today's Visiting Dr</u></b> : <b>List Of Visiting Dr.</b>;
+            console.log(this.props)
+            return (
+                <div className='card'>
+                     {links}
+                     <div>{/*<font color='blue'>CALL</font>*/}
+                     Call:
+                     <a  href="tel:+912642203090"> Reg-Desk </a>
+                        <a  href="tel:+912642203091"> Nursing</a>
+                        <a  href="tel:+91264220309"> Despenng</a>
+                        <a  href="tel:+91264220304"> Bill-Help</a>
+                    </div>
+                    <div className="Dr-list section ">
+                        {this.props.VisitingDr && this.props.VisitingDr.map(project => {
+                            return (
+                                !n ?
+                                    <DrSummary project={project} /> :
+                                    (<Link to={'/edit_dr/' + project.id} key={project.id}>
+                                        <DrSummaryall project={project} />
+                                    </Link>)
+                            )
+                        })}
+                    </div>
+                    
                 </div>
-            </div>
-        )
-        }else {
-            return(<p>No Visiting Dr. Today.</p>)
+            )
+        } else {
+            return (<div>No Visiting Dr. Today.
+               
+            </div>)
         }
     }
 }

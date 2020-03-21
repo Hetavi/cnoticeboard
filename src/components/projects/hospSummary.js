@@ -12,8 +12,8 @@ const hospSummary = ({ passing_hosp }) => {
   </div>*/}
         <div className='col s12 m6'>
           <div className='card'  >
-            <span className="black-text"> <b>{passing_hosp.hospName}</b></span>
-            <span className="black-text">{passing_hosp.city}</span>
+            <span > <b>{passing_hosp.hospName}</b></span><br></br>
+            <span className="black-text">{passing_hosp.city.toUpperCase()}</span>
             {/* following visting day sholud be print on all doctors list */}
             <div style={{ display: 'none' }}><span > </span><span className="yellow-text">{passing_hosp.id}</span></div>
             <div style={{ display: 'none' }}><span className="gray-text">By {passing_hosp.authorFirstName} {passing_hosp.authorLastName} {moment(passing_hosp.createdAt.toDate()).calendar()} </span>-

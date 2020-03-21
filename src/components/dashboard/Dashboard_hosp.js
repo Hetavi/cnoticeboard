@@ -30,17 +30,16 @@ class Dashboard extends Component {
       let hosp_array = this.props.hosp_props.filter(
         (hosp_elements) => {
           return hosp_elements.city.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
-            hosp_elements.hospName.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
-            hosp_elements.sp.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1
+            hosp_elements.hospName.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 
         }
       )
       return (
         <div className="dashboard container">
-          <div className="col s6">
-            <font color="blue" >Search   </font>
+          <div className="right">
+         
             <div className="input-field inline">
               <input id="search" type="text" value={value} onChange={this.handleChange} />
-              <label htmlFor="search" ><font color="black">City/Name</font></label>
+              <label htmlFor="search" ><font color="black">Search Name/City</font></label>
             </div>
           </div>
           <div className="col s6 m6">
