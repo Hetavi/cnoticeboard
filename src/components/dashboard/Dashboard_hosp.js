@@ -35,13 +35,14 @@ class Dashboard extends Component {
       )
       return (
         <div className="dashboard container">
-          <div className="right">
+          <div className="hh">
          
             <div className="input-field inline">
               <input id="search" type="text" value={value} onChange={this.handleChange} />
               <label htmlFor="search" ><font color="black">Search Name/City</font></label>
             </div>
           </div>
+
           <div className="col s6 m6">
             {hosp_array.map(sigle_hosp => {
               if (auth.uid) {
@@ -88,7 +89,7 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect(() => [
-    { collection: 'hosp' }
+    { collection: 'hosp',orderBy: ['hospName', 'asc'] }
     //{ collection: 'notice', where: [['visitday', 'array-contains', props.dayname]] }
   ])
 )(Dashboard)

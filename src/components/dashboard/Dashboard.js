@@ -3,7 +3,7 @@ import Gdash from './gDash'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import Youtube from './Youtube'
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);

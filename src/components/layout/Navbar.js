@@ -16,9 +16,9 @@ const Navbar = (props) => {
       {links}
     </nav>
     <div  className="center">
-    <Link style={{width:'33.33%'}}to='/dash_dr' className="waves-effect waves-light btn-small">Doctors</Link>
-    <Link style={{width:'33.33%'}} to='/dash_hosp' className="waves-effect waves-light btn-small">Hosp</Link>
-   <div style={{width:'33.33%'}} className="waves-effect waves-light btn-small" ><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></div> 
+    <Link style={{width:'33.33%'}}to='/dash_dr' className="waves-effect   waves-light btn-small  black">Doctors</Link>
+    <Link style={{width:'33.33%'}} to='/dash_hosp' className="waves-effect waves-light btn-small black">Hosp</Link>
+   <div style={{width:'33.33%'}} className="waves-effect waves-light btn-small black" ><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></div> 
   
   
     </div></div>

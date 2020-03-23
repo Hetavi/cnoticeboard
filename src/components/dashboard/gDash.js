@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import ProjectList from '../projects/ProjectList'
 import DrList from '../projects/DrList'
+import MediaList from '../projects/MediaList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import moment from 'moment'
-import Youtube from './Youtube'
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +21,9 @@ class Dashboard extends Component {
   };
  
   render() {
-    const { profile, auth, projects, VisitingDr, dayname } = this.props;
+    const { profile, auth,media, projects, VisitingDr, dayname } = this.props;
     //alert(this.props.td)
-    console.log(this.state)
+    console.log(media)
     console.log(this.props.td)
 
     console.log('profile')
@@ -31,10 +33,14 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div>{moment(this.props.td).format('MMMM Do YYYY, h:mm:ss a')}
-          {/*<Youtube movie={dayname} />*/}
+        
         </div>
         <div className="row">
-          <div className="col s12 m5 ">
+        <div className="col s12 m6 ">
+            { <MediaList media={media} />}
+            
+          </div>
+          <div className="col s12 m6 ">
             {/* <DrList VisitingDr={VisitingDr} />*/}
             {link1}
           </div>
@@ -56,6 +62,7 @@ const mapStateToProps = (state) => {
   return {
     projects: state.firestore.ordered.notice,
     VisitingDr: state.firestore.ordered.VisitingDr,
+    media: state.firestore.ordered.media,
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     notifications: state.firestore.ordered.notifications,
@@ -70,8 +77,9 @@ export default compose(
   firestoreConnect((props) => [
     // { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
    //,where:[['startDate','<',new Date(props.td)]]
-    { collection: 'notice',where:[['endDate','>',new Date(props.td+(0*24*60*60*1000))]]  },
-    { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.value]] }
+    { collection: 'notice',where:[['endDate','>',new Date(props.td+(0*24*60*60*1000))]],orderBy: ['endDate', 'desc']  },
+    { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.value]] },
+    { collection: 'media' }
   ]
   )
 )(Dashboard)

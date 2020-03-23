@@ -10,7 +10,7 @@ class DrList extends Component {
             const links = !n ? <b><u>Today's Visiting Dr</u></b> : <b>List Of Visiting Dr.</b>;
             console.log(this.props)
             return (
-                <div className='card'>
+                <div >
                      {links}
                      <div>{/*<font color='blue'>CALL</font>*/}
                      Call:

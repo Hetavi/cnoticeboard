@@ -6,7 +6,7 @@ const hospSummary = ({ passing_hosp }) => {
   const p1 = "https://www.google.com/"
   return (
     <div className=" container ">
-      <div className='row'>
+     
        {/* <div className='col s1' m1>
          <a phone><i class="material-icons">local_phone</i></a> 
   </div>*/}
@@ -19,7 +19,7 @@ const hospSummary = ({ passing_hosp }) => {
             <div style={{ display: 'none' }}><span className="gray-text">By {passing_hosp.authorFirstName} {passing_hosp.authorLastName} {moment(passing_hosp.createdAt.toDate()).calendar()} </span>-
           </div>
           </div>
-        </div >
+        
       </div >
     </div >
   )

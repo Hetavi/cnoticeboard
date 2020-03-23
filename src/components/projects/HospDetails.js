@@ -38,7 +38,9 @@ class HospDetails extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.displayon)
+    console.log(this.state.displayon);
+    hospName: this.state.hospName.trim();
+    city: this.state.city.trim();
     this.props.editHospActions(this.state);
     this.props.history.push('/dash_hosp');
   }

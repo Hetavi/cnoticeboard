@@ -7,9 +7,9 @@ const NoticeSummary = ({ project}) => {
     <div className=" container ">
       <div className='card z-depth-1'  >
       <div className="card-content grey-text text-darken-3">
-      <p><b>{project.dept} {project.title}</b>:{project.Body1} </p>
+      <b>{project.dept} {project.title}</b><br></br>{project.Body1} 
      
-     { <div style={{ display: 'bloack' }}>By: {project.authorFirstName} {project.authorLastName},{moment(project.createdAt.toDate()).calendar()}</div>}
+     { <div style={{ display: 'bloack' }}>By: {project.authorFirstName} {project.authorLastName},{moment(project.createdAt.toDate()).format('MMMM Do YYYY, h:mm:ss a')  }</div>}
       
       </div>
       </div>
