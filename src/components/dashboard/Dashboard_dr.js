@@ -8,7 +8,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: this.props.value
     }
   }
   handleChange = event => {
@@ -27,11 +27,12 @@ class Dashboard extends Component {
       )
       return (
         <div className="dashboard container">
+          <br></br>
           <div  className="col s6">
             <font color="blue" >Search   </font>
             <div className="input-field inline">
               <input id="search" type="text" value={this.state.value} onChange={this.handleChange} />
-              <label htmlFor="search" ><font color="black">Day/Name/Specility</font></label>
+              <label className="active" htmlFor="search" ><font color="black">Day/Name/Specility</font></label>
             </div>
           </div>
           <div className="row">

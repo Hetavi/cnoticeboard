@@ -4,10 +4,10 @@ import Youtube from './Youtube'
 const MediaSummary = ({ media }) => {
   console.log(media)
   return (
-    <div className=" container ">
-      today's video
-      { <Youtube movie={media.youtubeID} />}
-      <div style={{textAlign:'justify' }}>{media.description}</div>
+    <div  style={{margin:'5px'}} className="card">
+     <div style={{ margin:'5px',textAlign: 'justify', color: 'black' }}> {media.title}</div>
+      {media.youtubeID ? <Youtube movie={media.youtubeID} /> : null}
+    
     </div>
   )
 }

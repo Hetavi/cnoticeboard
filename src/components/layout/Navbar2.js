@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 const Navbar2 = (props) => {
+  console.log(props)
   return (
     <div className='center'>
       <h3>Admin Board</h3>
@@ -13,6 +14,7 @@ const Navbar2 = (props) => {
   
      <p></p>
       <div ><button style={{width:'300px',height:'2rem'}}> <Link to='/Old'>Edit old news</Link></button></div>
+      <div ><button style={{width:'300px',height:'2rem'}}> <Link to='/Old'>My Advertise</Link></button></div>
       <p></p>
       <div><button style={{width:'300px',height:'2rem'}}> <Link to='/signUp'>my profile</Link></button></div>
    

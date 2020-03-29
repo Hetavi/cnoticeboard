@@ -3,7 +3,7 @@ import moment from 'moment'
 const NoticeSummary = ({ project }) => {
   console.log()
   return (
-    <div  >
+    <div   >
       <span className="black-text" >Dr. <b>{project.name}</b> ({project.sp})  {project.visitHr} </span>
     </div>
   )

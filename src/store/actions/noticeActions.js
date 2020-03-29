@@ -3,6 +3,7 @@ export const generateNotice = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
+   
     if (profile.firstName) {
       firestore.collection('notice').doc().set({
         ...project,

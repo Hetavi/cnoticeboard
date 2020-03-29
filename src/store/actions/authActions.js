@@ -7,6 +7,7 @@ export const signIn = (credentials) => {
     firebase.auth().signInWithPopup(provider).then(() => {
       dispatch({ type: 'LOGIN_SUCCESS' });
       console.log('authAction')
+      window.location.reload(true);
       console.log()
     }).catch((err) => {
       dispatch({ type: 'LOGIN_ERROR', err });
@@ -34,6 +35,7 @@ export const signUp = (newUser) => {
         Mobile: newUser.Mobile,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
+        role:'user',
         initials: newUser.firstName[0] + newUser.lastName[0]
       });
     }).then(() => {

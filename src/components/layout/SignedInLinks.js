@@ -4,9 +4,16 @@ import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 const SignedInLinks = (props) => {
   const { auth, profile } = props;
+  console.log(profile.id)
   let link=null
+  {/*
+  switch case
+  approved user
+  admin=x 
+
+  */}
   if (profile.Dept="meth2"){
-    link=<li><NavLink to='/admin'><b>Admin</b></NavLink></li>
+    link=<li><NavLink to='/admin'><b>Dashboard</b></NavLink></li>
 }
   return (
     <div>
@@ -15,9 +22,9 @@ const SignedInLinks = (props) => {
         {link}
        
         
-        <li><a onClick={props.signOut}>Logout </a></li>
+        <li><a onClick={props.signOut}>{props.profile.firstName} </a></li>
         {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">
-          {props.profile.initials}
+          
   </NavLink></li>*/}
       </ul>
     </div>

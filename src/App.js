@@ -5,6 +5,7 @@ import DashboardOld from './components/dashboard/DashboardOld'
 import Dashboard from './components/dashboard/Dashboard'
 import Dashboard_dr from './components/dashboard/Dashboard_dr'
 import NoticeDetails from './components/projects/NoticeDetails'
+import edit_media from './components/projects/MediaDetails'
 import CreateNotice from './components/projects/CreateNotice'
 import SignIn from './components/auth/SignIn'
 
@@ -36,7 +37,7 @@ class App extends Component {
             <Route path='/hosp' component={CreatingHosp} />
             <Route path='/media' component={CreatingMedia} />
             <Route path='/edit_hosp/:id' component={edit_hosp} />
-           
+            <Route path='/edit_media/:id' component={edit_media} />
             <Route path='/dr' component={CreatingDr} />
             <Route path='/edit_dr/:id' component={edit_dr} />
             <Route path='/admin' component={Admin} />

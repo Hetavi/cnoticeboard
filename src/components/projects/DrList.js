@@ -12,18 +12,19 @@ class DrList extends Component {
             return (
                 <div >
                      {links}
-                     <div>{/*<font color='blue'>CALL</font>*/}
+                     <div>
                      Call:
-                     <a  href="tel:+912642203090"> Reg-Desk </a>
-                        <a  href="tel:+912642203091"> Nursing</a>
-                        <a  href="tel:+91264220309"> Despenng</a>
-                        <a  href="tel:+91264220304"> Bill-Help</a>
+                     <a  href="tel:+912642203090"><u>Reg-Desk</u>  </a>
+                        <a  href="tel:+912642203091"><u> Nursing </u></a>
+                        <a  href="tel:+91264220309"> <u>Despenng </u></a>
+                        <a  href="tel:+91264220304"><u>Bill-Help </u></a>
+                        
                     </div>
-                    <div className="Dr-list section ">
+                    <div className="Dr-list section card ">
                         {this.props.VisitingDr && this.props.VisitingDr.map(project => {
                             return (
                                 !n ?
-                                    <DrSummary project={project} /> :
+                                   <DrSummary project={project} /> :
                                     (<Link to={'/edit_dr/' + project.id} key={project.id}>
                                         <DrSummaryall project={project} />
                                     </Link>)

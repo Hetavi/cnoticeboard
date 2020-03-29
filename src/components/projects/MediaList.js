@@ -6,10 +6,13 @@ class MediaList extends Component {
         console.log(this.props.media)
         console.log('this.props.media')
         return (
-            <div className="Media-list section">
+            <div className="Media-list ">
+                
                 {this.props.media && this.props.media.map(media => {
                     return (
+                        <Link   to={'/edit_media/' + media.id} key={media.id}>
                         <MediaSummary media={media} />
+                        </Link>
                     )
                 })
                 }
