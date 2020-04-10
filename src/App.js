@@ -4,6 +4,8 @@ import Navbar1 from './components/layout/Navbar'
 import DashboardOld from './components/dashboard/DashboardOld'
 import Dashboard from './components/dashboard/Dashboard'
 import Dashboard_dr from './components/dashboard/Dashboard_dr'
+import Dashboard_user from './components/dashboard/userDash'
+import Edit_user from './components/projects/UserDetails'
 import NoticeDetails from './components/projects/NoticeDetails'
 import edit_media from './components/projects/MediaDetails'
 import CreateNotice from './components/projects/CreateNotice'
@@ -30,6 +32,8 @@ class App extends Component {
             <Route exact path='/' component={Dashboard} />
             <Route exact path='/dash_dr' component={Dashboard_dr} />
             <Route exact path='/dash_hosp' component={Dashboard_hosp} />
+            <Route path='/dash_user' component={Dashboard_user}/>
+            <Route path='/edit_user/:id' component={Edit_user}/>
             <Route path='/edit/:id' component={NoticeDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
@@ -40,7 +44,8 @@ class App extends Component {
             <Route path='/edit_media/:id' component={edit_media} />
             <Route path='/dr' component={CreatingDr} />
             <Route path='/edit_dr/:id' component={edit_dr} />
-            <Route path='/admin' component={Admin} />
+            <Route path='/adminboard' component={Admin} />
+            <Route path='/userboard' component={Admin} />
             <Route exact path='/old' component={DashboardOld} />
 
           </Switch>

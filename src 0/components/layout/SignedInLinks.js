@@ -10,12 +10,10 @@ const SignedInLinks = (props) => {
   switch case
   approved user
   admin=x 
-
   */}
- 
-  if (profile.role==="admin"){
-    link=<li><NavLink to='/adminboard'><u>{props.profile.firstName}</u></NavLink></li>
-}else{link=<li><NavLink to='/userboard'><u>{props.profile.firstName}</u></NavLink></li>}
+  if (profile.Dept="meth2"){
+    link=<li><NavLink to='/admin'><b>Dashboard</b></NavLink></li>
+}
   return (
     <div>
       {console.log(props.profile)}
@@ -23,7 +21,7 @@ const SignedInLinks = (props) => {
         {link}
        
         
-        <li><a onClick={props.signOut}>Logout</a></li>
+        <li><a onClick={props.signOut}>{props.profile.firstName} </a></li>
         {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">
           
   </NavLink></li>*/}

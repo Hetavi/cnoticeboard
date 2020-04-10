@@ -2,7 +2,7 @@ export const signIn = (credentials) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
+    provider.addScope('Profile');
     provider.addScope('email');
     firebase.auth().signInWithPopup(provider).then(() => {
       dispatch({ type: 'LOGIN_SUCCESS' });
@@ -13,7 +13,6 @@ export const signIn = (credentials) => {
       dispatch({ type: 'LOGIN_ERROR', err });
     });
   }
-  
 }
 export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
@@ -28,23 +27,22 @@ export const signUp = (newUser) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
     var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
+   
     firebase.auth().signInWithPopup(provider).then(resp => {
       return firestore.collection('users').doc(resp.user.uid).set({
         Dept: newUser.Dept,
         Mobile: newUser.Mobile,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
-        email:resp.user.email,
-        role:'unknown',
-        createdAt:new Date(),
-        initials: newUser.firstName[0] + newUser.lastName[0]
-      });
-    }).then(() => {
+        createdAt: new Date(),
+        identity:'unknown',
+        email:resp.user.email,     
+        initials: newUser.firstName[0] + newUser.lastName[0]        
+      },{ merge: true });
+    }).then(console.log('authAction')).then(() => {     
       dispatch({ type: 'SIGNUP_SUCCESS' });
     }).catch((err) => {
-      alert('fail',err)
+      alert('Updating Fail')
       dispatch({ type: 'SIGNUP_ERROR', err });
     });
   }

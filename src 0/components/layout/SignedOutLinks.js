@@ -9,7 +9,6 @@ const SignedOutLinks = (props) => {
         {/*<li><NavLink to='/signUp'>Sign up</NavLink></li>*/}
       
         <li><a onClick={props.signIn}>Login</a></li>
-     
       </ul>
     </div>
   )
@@ -17,8 +16,6 @@ const SignedOutLinks = (props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signIn: () => dispatch(signIn())
-    
   }
-
 }
 export default connect(null, mapDispatchToProps)(SignedOutLinks)

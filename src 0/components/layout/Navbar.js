@@ -7,7 +7,7 @@ import Navbar2 from './Navbar2'
 const Navbar = (props) => {
   const { auth, profile } = props;
 
-  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
+  const links = auth.uid ? <SignedInLinks profile={profile.identity} /> : <SignedOutLinks />;
  
   return (
     <div>
@@ -18,8 +18,7 @@ const Navbar = (props) => {
     <div  className="center">
     <Link style={{width:'25%'}}to='/dash_dr' className="waves-effect   waves-light btn-small  black">Doctors</Link>
     <Link style={{width:'25%'}} to='/dash_hosp' className="waves-effect waves-light btn-small black">Hosp</Link>
-    <Link style={{width:'25%'}} to='/dash_user' className="waves-effect waves-light btn-small black">Dir</Link>
-   
+    <Link style={{width:'25%'}} to='/dash_users' className="waves-effect waves-light btn-small black">Dir</Link>
    <div style={{width:'25%'}} className="waves-effect waves-light btn-small black" ><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></div> 
   
   
