@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
-  // how to where more than one onsitions ? for sbscription of various notice
+  // 
   return {
     projects: state.firestore.ordered.notice,
     VisitingDr: state.firestore.ordered.VisitingDr,

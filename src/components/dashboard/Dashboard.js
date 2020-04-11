@@ -27,6 +27,8 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log(state);
+ 
   // how to where more than one onsitions ? for sbscription of various notice
   return {
     profile: state.firebase.profile,

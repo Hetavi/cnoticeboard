@@ -40,7 +40,7 @@ class NoticeDetails extends Component {
   }
  back = (e) => {
     e.preventDefault();
-    this.props.history.push('/dash_user');
+    this.props.history.push('/Dashboard_user_back');
   }
   
   render() {

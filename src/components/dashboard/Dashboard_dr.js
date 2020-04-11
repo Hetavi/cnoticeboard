@@ -51,10 +51,11 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
+
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
-  // console.log(state);
+   console.log(state);
   return {
     VisitingDr: state.firestore.ordered.VisitingDr,
     auth: state.firebase.auth,
@@ -63,8 +64,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect((state) => [
-    { collection: 'VisitingDr' }
-  ])
+  connect(mapStateToProps)
 )(Dashboard)

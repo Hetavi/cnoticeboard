@@ -13,7 +13,7 @@ const SignedInLinks = (props) => {
 
   */}
  
-  if (profile.role==="admin"){
+  if (profile.role==="admin" ||profile.role==="owner"){
     link=<li><NavLink to='/adminboard'><u>{props.profile.firstName}</u></NavLink></li>
 }else{link=<li><NavLink to='/userboard'><u>{props.profile.firstName}</u></NavLink></li>}
   return (

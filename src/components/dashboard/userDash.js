@@ -51,13 +51,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect((props) => [
-    // { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
-    //,where:[['startDate','<',new Date(props.td)]]
-   // { collection: 'notice', where: [['endDate', '>', new Date(props.td + (0 * 24 * 60 * 60 * 1000))]], orderBy: ['endDate', 'desc'] },
-   // { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.value]] },
-    { collection: 'users' }
-  ]
-  )
+  connect(mapStateToProps)
 )(Dashboard)

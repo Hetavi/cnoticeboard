@@ -4,7 +4,8 @@ import Navbar1 from './components/layout/Navbar'
 import DashboardOld from './components/dashboard/DashboardOld'
 import Dashboard from './components/dashboard/Dashboard'
 import Dashboard_dr from './components/dashboard/Dashboard_dr'
-import Dashboard_user from './components/dashboard/userDash'
+import Dashboard_user from './components/dashboard/userDash_main'
+import Dashboard_user_back from './components/dashboard/userDash'
 import Edit_user from './components/projects/UserDetails'
 import NoticeDetails from './components/projects/NoticeDetails'
 import edit_media from './components/projects/MediaDetails'
@@ -34,6 +35,8 @@ class App extends Component {
             <Route exact path='/dash_hosp' component={Dashboard_hosp} />
             <Route path='/dash_user' component={Dashboard_user}/>
             <Route path='/edit_user/:id' component={Edit_user}/>
+            <Route path='/Dashboard_user_back' component={Dashboard_user_back}/>
+           
             <Route path='/edit/:id' component={NoticeDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />

@@ -49,7 +49,7 @@ class CreateNotice extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.generateNotice(this.state);
-    this.props.history.push('/admin');
+    this.props.history.push('/');
   }
   handleUploadStart = () =>
     this.setState({

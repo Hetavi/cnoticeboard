@@ -4,8 +4,9 @@ export const generateNotice = (project) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
    
+   
     if (profile.firstName) {
-      firestore.collection('notice').doc().set({
+      firestore.collection('notice').doc(authorId).set({
         ...project,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
