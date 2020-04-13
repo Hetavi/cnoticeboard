@@ -12,6 +12,7 @@ export const createProject = (project) => {
     }).then(() => {
       dispatch({ type: 'CREATE_VisitingDr_SUCCESS' });
     }).catch(err => {
+      alert('fail',err)
       dispatch({ type: 'CREATE_Visiting_ERROR' }, err);
     });
   }

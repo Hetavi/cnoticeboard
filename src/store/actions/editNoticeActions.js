@@ -16,6 +16,7 @@ export const editNoticeActions = (project) => {
       }, { merge: true }).then(() => {
         dispatch({ type: 'EDIT_NOTICE_SUCCESS' });
       }).catch(err => {
+        alert('fail',err)
         dispatch({ type: 'EDIT_NOTICE_ERROR' }, err);
       });
     }else {

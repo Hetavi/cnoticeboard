@@ -15,6 +15,7 @@ export const editDrActions = (project) => {
       }, { merge: true }).then(() => {
         dispatch({ type: 'EDIT_DR_SUCCESS' });
       }).catch(err => {
+        alert('fail',err)
         dispatch({ type: 'EDIT_DR_ERROR' }, err);
       });
     }else {

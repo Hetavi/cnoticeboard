@@ -15,6 +15,7 @@ export const generateNotice = (project) => {
       }).then(() => {
         dispatch({ type: 'CREATE_NOTICE_SUCCESS' });
       }).catch(err => {
+        alert('fail',err)
         dispatch({ type: 'CREATE_NOTICE_ERROR' }, err);
       });
     } else {

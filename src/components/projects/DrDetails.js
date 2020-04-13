@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
+
 import { compose } from 'redux'
 import { editDrActions } from '../../store/actions/editDrActions'
 import { Redirect } from 'react-router-dom'
-import moment from 'moment'
+
 {/* use for edit notice */ }
 class HospDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      docid:this.props.docid,
+      docid: this.props.docid,
       name: this.props.project.name,
       sp: this.props.project.sp,
       visitday: this.props.project.visitday,

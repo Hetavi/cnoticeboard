@@ -23,6 +23,7 @@ class Dashboard extends Component {
     console.log(media)
     console.log(this.props.td)
     console.log('profile')
+
     const link1 = VisitingDr ? <DrList VisitingDr={VisitingDr} /> : <p>Please wait..</p>
     const link2 = projects ? <ProjectList projects={projects} /> : <p>Please wait..</p>
     // if (!auth.uid) return <Redirect to='/signin' /> 
@@ -67,8 +68,8 @@ export default compose(
   firestoreConnect((props) => [
     // { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
     //,where:[['startDate','<',new Date(props.td)]]
-    { collection: 'notice', where: [['endDate', '>', new Date(props.td + (0 * 24 * 60 * 60 * 1000))]], orderBy: ['endDate', 'desc'] },
-    { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.value]] },
+    { collection: 'notice', where: [['createdAt', '>', new Date(props.td - (7 * 24 * 60 * 60 * 1000))]], orderBy: ['createdAt', 'desc'] },
+    { collection: 'VisitingDr' },
     { collection: 'media' }
   ]
   )

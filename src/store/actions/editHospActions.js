@@ -15,6 +15,7 @@ export const editHospActions = (project) => {
       }, { merge: true }).then(() => {
         dispatch({ type: 'EDIT_hosp_SUCCESS' });
       }).catch(err => {
+        alert('fail',err)
         dispatch({ type: 'EDIT_hosp_ERROR' }, err);
       });
     }else {

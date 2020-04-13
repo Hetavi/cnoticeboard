@@ -16,6 +16,7 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
+    console.log(this.props)
     const { VisitingDr } = this.props;
     if (VisitingDr) {
       let dr_array = VisitingDr.filter(

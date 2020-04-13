@@ -16,6 +16,7 @@ export const generateMedia = (project) => {
         dispatch({ type: 'CREATE_MEDIA_ERROR' }, err);
       });
     } else {
+      
       alert ('You are not authorised ')
     }
   }

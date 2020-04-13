@@ -8,12 +8,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 class CreateNotice extends Component {
   state = {
-    dept: '',
-    title: '',
-    Body1: '',
-    Body2: '',
-    Body3: '',
-    displayon: true,
+    dept: this.props.project ? this.props.project.dept : '',
+    title: this.props.project ? this.props.project.title : '',
+    Body1: this.props.project ? this.props.project.Body1 : '',
+    displayon: this.props.project ? this.props.project.displayon : true,
+
     startDate: new Date(),
     endDate: new Date(),
     filenames: [],
@@ -21,6 +20,7 @@ class CreateNotice extends Component {
     isUploading: false,
     uploadProgress: 0
   }
+
   handleDate = date => {
     this.setState({
       startDate: date
@@ -32,6 +32,7 @@ class CreateNotice extends Component {
     });
   };
   handleChange = (e) => {
+
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -48,6 +49,7 @@ class CreateNotice extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+
     this.props.generateNotice(this.state);
     this.props.history.push('/');
   }
@@ -80,16 +82,34 @@ class CreateNotice extends Component {
       isUploading: false
     }));
   };
+  back = (e) => {
+    e.preventDefault();
+    this.props.history.push('/');
+  }
   render() {
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' />
+    console.log(this.props)
+
+    const { auth, profile } = this.props;
+    let link = null   
+    let Enab=true
+    // if (!auth.uid) return <Redirect to='/signin' />
+    if (this.props.id === this.props.auth.uid) {
+      link = <button className="btn green lighten-1">Save</button>;
+      Enab=false
+    }
+
+
+
     return (
       <div className="container section project-editing">
-        <h3>Add NEWS   </h3>
+        <h5>Advertise   </h5>
+
         <div className="bg-img"> </div>
         <form className="black" onSubmit={this.handleSubmit}>
+
           <div className="card z-depth-0">
-            <div className="card-content" style={{ padding: '2px' }}>
+      <div > 
+              {/* <div className="card-content" style={{ padding: '2px' }}>
               <div> <h6>Display from </h6>
                 <DatePicker
                   selected={this.state.startDate}
@@ -106,17 +126,18 @@ class CreateNotice extends Component {
                   dateFormat="Pp"
                 />
               </div>
-            </div>
-            <div className="input-field ">
-              <input type="text" id='dept' onChange={this.handleChange} />
-              <label htmlFor="dept">Department</label>
+    </div>*/}
+
+              <div className="input-field ">
+                <input disabled={Enab}type="text" id='dept' defaultValue={this.state.dept} onChange={this.handleChange} />
+                <label className='active' htmlFor="dept">Target Group</label>
               </div>
-            <div className="input-field ">
-              <input type="text" id='title' onChange={this.handleChange} />
-              <label htmlFor="title">Title</label>
+              <div className="input-field ">
+                <input disabled={Enab} type="text" id='title' defaultValue={this.state.title} onChange={this.handleChange} />
+                <label className='active' htmlFor="title">Title</label>
               </div>
               {/* following for future use */}
-            {/*<div>
+              {/*<div>
               <FileUploader
                 accept="image/*"
                 name="image-uploader"
@@ -135,12 +156,13 @@ class CreateNotice extends Component {
                 })}
               </div>
             </div>*/}
-            <div className="input-field ">
-              <textarea id='Body1' style={{ height: '10rem' }} onChange={this.handleChange} />
-              <label htmlFor="Body1">Detail</label>
+              <div className="input-field ">
+                <textarea  disabled={Enab} id='Body1' defaultValue={this.state.Body1} style={{ height: '10rem' }} onChange={this.handleChange} />
+                <label className='active' htmlFor="Body1">Detail</label>
+              </div>
             </div>
-            <div className="input-field">
-              <button className="btn pink lighten-1">Save</button>
+            <div className="input-field"> {link}
+              <button className="btn pink lighten-1" onClick={this.back}>Back</button>
             </div>
           </div>
         </form>
@@ -148,9 +170,17 @@ class CreateNotice extends Component {
     )
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  let id = state.firebase.auth.uid
+  if (ownProps.match.params.id) { id = ownProps.match.params.id }
+  const projects = state.firestore.data.notice;
+  const project = projects ? projects[id] : null
+  console.log(state.firestore)
   return {
-    auth: state.firebase.auth
+    project: project,
+    id: id,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 const mapDispatchToProps = dispatch => {

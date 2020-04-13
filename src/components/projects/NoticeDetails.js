@@ -16,7 +16,7 @@ class NoticeDetails extends Component {
       Body1: this.props.project.Body1,
       Body2: this.props.project.Body2,
       Body3: this.props.project.Body3,
-      docid: this.props.docid,
+      docid: this.props.auth.email,
       downloadURLs: this.props.downloadURLs,
       displayon: this.props.project.displayon
     }

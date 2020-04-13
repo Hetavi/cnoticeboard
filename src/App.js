@@ -37,7 +37,7 @@ class App extends Component {
             <Route path='/edit_user/:id' component={Edit_user}/>
             <Route path='/Dashboard_user_back' component={Dashboard_user_back}/>
            
-            <Route path='/edit/:id' component={NoticeDetails} />
+            <Route path='/edit/:id' component={CreateNotice} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateNotice} />
