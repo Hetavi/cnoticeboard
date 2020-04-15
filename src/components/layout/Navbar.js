@@ -16,9 +16,10 @@ const Navbar = (props) => {
       {links}
     </nav>
     <div  className="center">
+    <Link style={{width:'25%'}} to='/' className="waves-effect waves-light btn-small black">Home</Link>
     <Link style={{width:'25%'}}to='/dash_dr' className="waves-effect   waves-light btn-small  black">Doctors</Link>
     <Link style={{width:'25%'}} to='/dash_hosp' className="waves-effect waves-light btn-small black">Hosp</Link>
-    <Link style={{width:'25%'}} to='/dash_user' className="waves-effect waves-light btn-small black">Dir</Link>
+
    
    <div style={{width:'25%'}} className="waves-effect waves-light btn-small black" ><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></div> 
   

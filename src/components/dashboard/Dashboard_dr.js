@@ -21,42 +21,43 @@ class Dashboard extends Component {
     if (VisitingDr) {
       let dr_array = VisitingDr.filter(
         (dr_elements) => {
-          return dr_elements.name.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1||
-          dr_elements.sp.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1||
-          dr_elements.visitday.includes(this.state.value.toLowerCase())
+          return dr_elements.name.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
+            dr_elements.sp.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
+            dr_elements.visitday.includes(this.state.value.toLowerCase())
         }
       )
       return (
         <div className="dashboard container">
-          <br></br>
-          <div  className="col s6">
-            <font color="blue" >Search   </font>
-            <div className="input-field inline">
+          <div style={{margin:'12px'}}className="card tiny">
+            <div>
+              <i class="material-icons prefix">phone</i>
+              <a href="tel:+912642203090"> <button className='btn-tiny'  >Reg-Desk</button></a>
+              <a href="tel:+912642203093"> <button className='btn-tiny'  > dispensing</button></a>
+              <a href="tel:+912642203091"> <button className='btn-tiny'  >  Nursing </button></a>
+              <a href="tel:+91264220304"> <button className='btn-tiny'  >Bill-Help </button></a>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">search</i>
               <input id="search" type="text" value={this.state.value} onChange={this.handleChange} />
-              <label className="active" htmlFor="search" ><font color="black">Day/Name/Specility</font></label>
+              
             </div>
           </div>
           <div className="row">
-            <div className="col s12 m5 offset-m1">
+            <div className="col s12 m5 ">
               <DrList VisitingDr={dr_array} />
             </div>
           </div>
         </div>
       )
-
-
-    } else { return <div>please wait...</div>}
-   
+    } else { return <div>please wait...</div> }
     // if (!auth.uid) return <Redirect to='/signin' /> 
-   
   }
 }
 const mapStateToProps = (state) => {
-
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
-   console.log(state);
+  console.log(state);
   return {
     VisitingDr: state.firestore.ordered.VisitingDr,
     auth: state.firebase.auth,

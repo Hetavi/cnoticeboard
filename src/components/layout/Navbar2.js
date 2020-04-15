@@ -6,11 +6,12 @@ const Navbar2 = (props) => {
   let dashlink = null
   if (props.match.path === '/adminboard') {
     dashlink = <div>
-      <div><button style={{ width: '300px', height: '2rem' }}><Link to='/dr'>New doctor</Link></button></div>
-      <div><button style={{ width: '300px', height: '2rem' }}><Link to='/hosp'>New Hospitals</Link></button></div>
-      <div><button style={{ width: '300px', height: '2rem' }}><Link to='/'>New Advertise</Link></button></div>
-      <div><button style={{ width: '300px', height: '2rem' }}><Link to='/media'>New media</Link></button></div>
-      <div ><button style={{ width: '300px', height: '2rem' }}> <Link to='/Old'>Edit old news</Link></button></div>
+      <div><Link to='/dash_user'><button style={{ width: '300px', height: '2rem' }}>New Members</button></Link></div>
+     <p></p>
+      <div><Link to='/dr'><button style={{ width: '300px', height: '2rem' }}>New doctor</button></Link></div>
+      <div><Link to='/hosp'><button style={{ width: '300px', height: '2rem' }}>New Hospitals</button></Link></div>
+       <div><Link to='/media'><button style={{ width: '300px', height: '2rem' }}>New News</button></Link></div>
+      <div > <Link to='/Old'><button style={{ width: '300px', height: '2rem' }}>Edit old news</button></Link></div>
     </div>
   }
   return (
@@ -18,8 +19,8 @@ const Navbar2 = (props) => {
       <h3>Dashboard</h3>
       {dashlink}
       <p></p>
-      <div ><button style={{ width: '300px', height: '2rem' }}> <Link to='/create'>New Advertise</Link></button></div>
-      <div><button style={{ width: '300px', height: '2rem' }}> <Link to='/signUp'>My Profile</Link></button></div>
+      <div > <Link to='/create'><button  style={{ width: '300px', height: '2rem' }}>My Advertise</button></Link></div>
+      <div><Link to='/signUp'><button style={{ width: '300px', height: '2rem' }}> My Profile</button></Link></div>
     </div>
   )
 }

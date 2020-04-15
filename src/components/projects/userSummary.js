@@ -1,9 +1,11 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+
 const NoticeSummary = ({ project }) => {
+ 
   const li="tel:+"
-    const wa="wa.me/"
+    const wa="https://wa.me/"
     const li2=project.Mobile
     const link=li.concat(li2)
     const walink=wa.concat(li2)

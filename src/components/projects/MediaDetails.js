@@ -39,7 +39,7 @@ class MediaDetails extends Component {
               <input className='col s10' type="text" id='title' defaultValue={this.state.title} onChange={this.handleChange} />
             </div>
            
-            >
+            
             <div style={{ display: (this.props.auth.uid ? 'block' : 'none') }} className="input-field">
               <button className="btn pink lighten-1">Save</button>
             </div>

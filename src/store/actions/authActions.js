@@ -37,11 +37,11 @@ export const signUp = (newUser) => {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email:resp.user.email,
-        role:'unknown',
+       role:newUser.role,
         createdAt:new Date(),
         initials: newUser.firstName[0] + newUser.lastName[0]
       });
-    }).then(() => {
+    },{ merge: true }).then(() => {
       dispatch({ type: 'SIGNUP_SUCCESS' });
     }).catch((err) => {
       alert('fail',err)

@@ -25,7 +25,9 @@ class Dashboard extends Component {
     console.log('profile')
 
     const link1 = VisitingDr ? <DrList VisitingDr={VisitingDr} /> : <p>Please wait..</p>
-    const link2 = projects ? <ProjectList projects={projects} /> : <p>Please wait..</p>
+    const link2 = projects ? <ProjectList projects={projects} /> : <div class="progress">
+    <div class="indeterminate"></div>
+</div>
     // if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
@@ -70,7 +72,7 @@ export default compose(
     //,where:[['startDate','<',new Date(props.td)]]
     { collection: 'notice', where: [['createdAt', '>', new Date(props.td - (7 * 24 * 60 * 60 * 1000))]], orderBy: ['createdAt', 'desc'] },
     { collection: 'VisitingDr' },
-    { collection: 'media' }
+    { collection: 'media',where: [['endDate', '>', new Date(props.td - (1 * 24 * 60 * 60 * 1000))]] } 
   ]
   )
 )(Dashboard)

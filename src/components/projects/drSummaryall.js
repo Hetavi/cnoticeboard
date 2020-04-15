@@ -3,6 +3,7 @@ import moment from 'moment'
 const NoticeSummary = ({ project}) => {
   console.log()
   
+  
   return (
     <div className='card' >
      

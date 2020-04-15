@@ -99,7 +99,7 @@ class CreateNotice extends Component {
             </div>
             <div className="input-field ">
               <input type="text" id='youtubeID' onChange={this.handleChange} />
-              <label htmlFor="youtubeID">You Tbe ID</label>
+              <label htmlFor="youtubeID">You Tube ID</label>
             </div>
             <div className="input-field ">
               <textarea id='description' style={{ height: '3rem' }} onChange={this.handleChange} />
@@ -113,7 +113,7 @@ class CreateNotice extends Component {
                 dateFormat="Pp"
               />
             </div>
-            <div> Display to
+            <div><span> Display   to   </span>
             <DatePicker
                 selected={this.state.endDate}
                 onChange={this.handleDate_end}

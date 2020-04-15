@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import { editHospActions } from '../../store/actions/editHospActions'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
-{/* use for edit notice */ }
+
 class HospDetails extends Component {
   constructor(props) {
     super(props);
@@ -44,43 +44,59 @@ class HospDetails extends Component {
     this.props.editHospActions(this.state);
     this.props.history.push('/dash_hosp');
   }
+  back = (e) => {
+    e.preventDefault();
+    this.props.history.push('/dash_hosp');
+  }
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
    
     console.log(this.props)
     console.log('this.state')
+    let btnlink = null
+    let Enab = true
+    if (this.props.profile.isEmpty === true) { Enab = true }
+    else {
+      if (this.props.profile.role === 'admin' || this.props.profile.role ==='owner') {
+        btnlink = <button className="btn green lighten-1">Save</button>;
+        Enab = false
+      } else { Enab = true }
+    }
+
     return (
 
       <div className="container">
-      <form className="white" onSubmit={this.handleSubmit}>
+      <form className="black" onSubmit={this.handleSubmit}>
+      <div className="card z-depth-0">
         <h5 className="grey-text text-darken-3"> Hospital </h5>
         <div className="input-field">
-          <input disabled type="text" id='city' defaultValue={this.state.city} onChange={this.handleChange} />
+          <input disabled={Enab} type="text" id='city' defaultValue={this.state.city} onChange={this.handleChange} />
          
         </div>
         <div className="input-field">
-          <input type="text" id='hospName' defaultValue={this.state.hospName} onChange={this.handleChange} />
+          <input disabled={Enab} type="text" id='hospName' defaultValue={this.state.hospName} onChange={this.handleChange} />
           </div>
         <div className="input-field">
-          <input type="text" id='sp' defaultValue={this.state.sp} onChange={this.handleChange} />
+          <input disabled={Enab} type="text" id='sp' defaultValue={this.state.sp} onChange={this.handleChange} />
           <label  className="grey-text text-darken-3 active" htmlFor="sp">Speciality</label>
         </div>
         <div className="row col s12 ">
           <div className='input-field col s6'>
-            <input type="number" id='phone1' defaultValue={this.state.phone1} onChange={this.handleChange} />
+            <input disabled={Enab} type="number" id='phone1' defaultValue={this.state.phone1} onChange={this.handleChange} />
             <label  className="grey-text text-darken-3 active" htmlFor="phone1">Phone 1</label>
           </div>
           <div className='input-field col s6'>
-            <input type="number" id='phone2' defaultValue={this.state.phone2} onChange={this.handleChange} />
+            <input disabled={Enab} type="number" id='phone2' defaultValue={this.state.phone2} onChange={this.handleChange} />
             <label  className="grey-text text-darken-3 active" htmlFor="phone2">Phone 2</label>
           </div>
         </div>
         <div className="input-field">
-          <textarea id='adress' style={{ height: '3rem' }} defaultValue={this.state.address} onChange={this.handleChange} />
+          <textarea disabled={Enab} id='adress' style={{ height: '3rem' }} defaultValue={this.state.address} onChange={this.handleChange} />
           <label className='active' htmlFor="adress">Address</label>
         </div>
-        <div className="input-field">
-          <button className="btn pink lighten-1">Save</button>
+        {btnlink}
+            <button className="btn pink lighten-1" onClick={this.back}>Back</button> <i>Added by:{this.props.project.authorFirstName} {this.props.project.authorLastName}</i>
+        
         </div>
       </form>
     </div>
@@ -95,6 +111,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     docid: id,
     project: project,
+    profile: state.firebase.profile,
     auth: state.firebase.auth
   }
 }

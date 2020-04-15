@@ -59,6 +59,7 @@ form{
 form button, form h5{
   margin: 6px 0;
 }
+input[disabled]{ color: rgb(47, 245, 8); }
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
