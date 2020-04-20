@@ -25,6 +25,7 @@ class Dashboard extends Component {
   };
   render() {
     const { hosp_props, err, auth, value,profile } = this.props;
+    if(this.props.history.action==='POP')return <Redirect to='/' /> 
     console.log(profile)
     if (hosp_props) {
       let hosp_array = this.props.hosp_props.filter(

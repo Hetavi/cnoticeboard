@@ -7,11 +7,11 @@ class ProjectList extends Component {
   return (
     <div  className="project-list section">
       { this.props.projects && this.props.projects.map(project => {
-        return (
+       if(project.displayon){ return (
           <Link   to={'/edit/' + project.id} key={project.id}>
             <ProjectSummary   project={project} />
           </Link>
-        )
+        )}else{return null}
       })}  
     </div>
   )

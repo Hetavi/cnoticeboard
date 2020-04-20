@@ -37,8 +37,10 @@ class CreateProject extends Component {
     // window.open("http://wa.me/91" + this.state.mobile + "?text=Hi "+this.state.name+", Thank you for choosing us to take care of your "+this.state.modelno+" Your Repair id is "+this.state.mobile +". For any query please contact us on: 9898421074");
   }
   render() {
+    if(this.props.history.action==='POP')return <Redirect to='/' /> 
     const { auth } = this.props;
     //if (!auth.uid) return <Redirect to='/signin' />
+   
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>

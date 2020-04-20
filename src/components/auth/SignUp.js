@@ -6,15 +6,12 @@ import { signUp } from '../../store/actions/authActions'
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    email: '',
-    password: '',
-    Valid:null,
-    firstName:this.props.profile.firstName ,
-    lastName:this.props.profile.lastName ,
-    Dept:this.props.profile.Dept,
-    Mobile:this.props.profile.Mobile,
-    role:this.props.role
+    this.state = {   
+    firstName:this.props.profile.firstName ?this.props.profile.firstName:'',
+    lastName:this.props.profile.lastName?this.props.profile.lastName:'' ,
+    Dept:this.props.profile.Dept?this.props.profile.Dept:'',
+    Mobile:this.props.profile.Mobile?this.props.profile.Mobile:'',
+    role:this.props.role?this.props.role:'unknown'
   }}
   handleChange = (e) => {
     this.setState({
@@ -38,11 +35,15 @@ class SignUp extends Component {
     console.log(this.state)
  
   //  if (auth.uid) return <Redirect to='/' /> 
-  if (this.props.profile.firstName){
+  if(this.props.history.action==='POP')return <Redirect to='/' /> 
+  if (this.state){
   return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Profile</h5>
+          <h5 className="grey-text text-darken-3">Profile:
+          {(this.state.role==='unknown')?null:this.state.role}
+          </h5>
+          {(this.state.role==='unknown')?'Please contact any admin for approval':null}
           <p></p>
         {/*  <div className="input-field">
             <label htmlFor="email">Email</label>

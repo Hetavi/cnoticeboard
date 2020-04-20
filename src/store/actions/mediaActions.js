@@ -3,8 +3,10 @@ export const generateMedia = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    if (profile.firstName) {
-      firestore.collection('media').doc().set({
+    console.log(project)
+    if (project.docid!==null) {
+ 
+      firestore.collection('media').doc(project.docid).set({
         ...project,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
@@ -16,8 +18,21 @@ export const generateMedia = (project) => {
         dispatch({ type: 'CREATE_MEDIA_ERROR' }, err);
       });
     } else {
-      
-      alert ('You are not authorised ')
+      //todo  
+     
+      firestore.collection('media').doc().set({
+        ...project,
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
+        authorId: authorId,
+        createdAt: new Date()
+      }).then(() => {
+        dispatch({ type: 'CREATE_MEDIA_SUCCESS' });
+      }).catch(err => {
+        alert('fail')
+        dispatch({ type: 'CREATE_MEDIA_ERROR' }, err);
+      });
+    
     }
   }
 };

@@ -3,6 +3,7 @@ import UserList from '../projects/UserList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 class Dashboard extends Component {
   constructor(props) {
@@ -16,11 +17,12 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
+   // if(this.props.history.action==='POP')return <Redirect to='/' /> 
     const { profile, auth, users } = this.props;
     //alert(this.props.td)
-    console.log(users)
+   
     const link2 = users ? <UserList projects={this.props} /> : <p>Please wait..</p>
-    // if (!auth.uid) return <Redirect to='/signin' /> 
+     if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
         <div>{moment(this.props.td).format('MMMM Do YYYY, h:mm:ss a')}

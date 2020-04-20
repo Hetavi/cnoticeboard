@@ -11,7 +11,7 @@ export const generateNotice = (project) => {
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
-        createdAt: new Date()
+       createdAt:(project.displayon===true)?new Date():project.createdAt
       }).then(() => {
         dispatch({ type: 'CREATE_NOTICE_SUCCESS' });
       }).catch(err => {

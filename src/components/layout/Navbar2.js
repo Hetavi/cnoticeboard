@@ -6,8 +6,7 @@ const Navbar2 = (props) => {
   let dashlink = null
   if (props.match.path === '/adminboard') {
     dashlink = <div>
-      <div><Link to='/dash_user'><button style={{ width: '300px', height: '2rem' }}>New Members</button></Link></div>
-     <p></p>
+     
       <div><Link to='/dr'><button style={{ width: '300px', height: '2rem' }}>New doctor</button></Link></div>
       <div><Link to='/hosp'><button style={{ width: '300px', height: '2rem' }}>New Hospitals</button></Link></div>
        <div><Link to='/media'><button style={{ width: '300px', height: '2rem' }}>New News</button></Link></div>
@@ -19,6 +18,8 @@ const Navbar2 = (props) => {
       <h3>Dashboard</h3>
       {dashlink}
       <p></p>
+      <div><Link to='/dash_user'><button style={{ width: '300px', height: '2rem' }}>{(props.match.path === '/adminboard')?'New Members':'Admin List'}</button></Link></div>
+    
       <div > <Link to='/create'><button  style={{ width: '300px', height: '2rem' }}>My Advertise</button></Link></div>
       <div><Link to='/signUp'><button style={{ width: '300px', height: '2rem' }}> My Profile</button></Link></div>
     </div>

@@ -8,11 +8,11 @@ class HospDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      docid: this.props.docid,
-      name: this.props.project.name,
-      sp: this.props.project.sp,
-      visitday: this.props.project.visitday,
-      visitHr: this.props.project.visitHr,
+      docid: this.props?this.props.docid:'',
+      name: this.props.project?this.props.project.name:'',
+      sp: this.props.project?this.props.project.sp:'',
+      visitday: this.props.project?this.props.project.visitday:'',
+      visitHr: this.props.project?this.props.project.visitHr:'',
       stats: '',
     }
   }
@@ -46,6 +46,7 @@ class HospDetails extends Component {
   }
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
+    if(this.props.history.action==='POP')return <Redirect to='/' /> 
     console.log(this.props)
     console.log('this.state')
     var n0 = this.state.visitday.includes("sun")
@@ -118,7 +119,7 @@ class HospDetails extends Component {
               <label className='active' htmlFor="visitHr">Visiting Hour</label>
             </div>
             {btnlink}
-            <button className="btn pink lighten-1" onClick={this.back}>Back</button> <i>Added by:{this.props.project.authorFirstName} {this.props.project.authorLastName}</i>
+            <button className="btn pink lighten-1" onClick={this.back}>Back</button> <i>Added by:{this.props.project?this.props.project.authorFirstName:null} {this.props.project?this.props.project.authorLastName:null}</i>
           </div>
         </form>
       </div>

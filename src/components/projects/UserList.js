@@ -13,18 +13,26 @@ class DrList extends Component {
                 <div >
                      {links}
              
-                    <div className="Dr-list section card ">
+                    <div className="User-list section card ">
+                        
                         {this.props.projects.users && this.props.projects.users.map(project => {
-                            return (
-                                (this.props.projects.profile.role=='admin')? <UserSummary project={project} /> :<UserSummary project={project} />
+                           if(this.props.projects.profile.role=='admin'||this.props.projects.profile.role=='owner') return (
+                                (project.role==='unknown')? <UserSummary project={project} /> :null 
                             )
                         })}
+                        <p>Admin List</p>
+                         {this.props.projects.users && this.props.projects.users.map(project => {
+                           return (
+                                (project.role==='admin'||project.role==='owner')? <UserSummary project={project} /> :null 
+                            )
+                        })}
+
                     </div>
                     
                 </div>
             )
         } else {
-            return (<div>dara not availbale.
+            return (<div>No New Members
                
             </div>)
         }

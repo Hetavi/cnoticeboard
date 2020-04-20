@@ -9,8 +9,7 @@ import moment from 'moment'
 class NoticeDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-     
+    this.state = {     
        dept: this.props.project.dept,
       title: this.props.project.title,
       Body1: this.props.project.Body1,

@@ -10,13 +10,13 @@ class HospDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: this.props.project.city,
-      hospName: this.props.project.hospName,
-      address: this.props.project.adress,
-      sp: this.props.project.sp,
-      phone1: this.props.project.phone1,
-      phone2: this.props.project.phone2,
-      docid: this.props.docid,
+      city: this.props.project?this.props.project.city:'',
+      hospName: this.props.project?this.props.project.hospName:'',
+      address: this.props.project?this.props.project.adress:'',
+      sp: this.props.project?this.props.project.sp:'',
+      phone1: this.props.project?this.props.project.phone1:'',
+      phone2: this.props.project?this.props.project.phone2:'',
+      docid: this.props.docid?this.props.docid:'',
       // downloadURLs: this.props.downloadURLs,
       // displayon: this.props.project.displayon
     }
@@ -50,7 +50,8 @@ class HospDetails extends Component {
   }
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
-   
+    if(this.props.history.action==='POP')return <Redirect to='/' /> 
+  
     console.log(this.props)
     console.log('this.state')
     let btnlink = null

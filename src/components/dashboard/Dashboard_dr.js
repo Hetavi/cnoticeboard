@@ -17,6 +17,7 @@ class Dashboard extends Component {
   };
   render() {
     console.log(this.props)
+    if(this.props.history.action==='POP')return <Redirect to='/' /> 
     const { VisitingDr } = this.props;
     if (VisitingDr) {
       let dr_array = VisitingDr.filter(
@@ -30,11 +31,11 @@ class Dashboard extends Component {
         <div className="dashboard container">
           <div style={{margin:'12px'}}className="card tiny">
             <div>
-              <i class="material-icons prefix">phone</i>
-              <a href="tel:+912642203090"> <button className='btn-tiny'  >Reg-Desk</button></a>
-              <a href="tel:+912642203093"> <button className='btn-tiny'  > dispensing</button></a>
-              <a href="tel:+912642203091"> <button className='btn-tiny'  >  Nursing </button></a>
-              <a href="tel:+91264220304"> <button className='btn-tiny'  >Bill-Help </button></a>
+              <i style={{width:'6%'}} class="material-icons prefix">phone</i>
+              <a href="tel:+912642203090"> <button style={{width:'22%'}}className='btn-tiny'  >Regi..</button></a>
+              <a href="tel:+912642203093"> <button style={{width:'22%'}}className='btn-tiny'  >Dispensing</button></a>
+              <a href="tel:+912642203091"> <button style={{width:'22%'}}className='btn-tiny'  >Nursing </button></a>
+              <a href="tel:+91264220304"> <button style={{width:'22%'}} className='btn-tiny'  >Bill-Help </button></a>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">search</i>
@@ -57,7 +58,7 @@ const mapStateToProps = (state) => {
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
-  console.log(state);
+  //console.log(state);
   return {
     VisitingDr: state.firestore.ordered.VisitingDr,
     auth: state.firebase.auth,

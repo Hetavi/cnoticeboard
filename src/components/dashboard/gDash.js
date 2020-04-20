@@ -36,10 +36,12 @@ class Dashboard extends Component {
         </div>
         <div className="row">
           <div className="col s12 m6 ">
+          
             {<MediaList media={media} />}
           </div>
           
           <div className="col s12 m6">
+            <h5>Advertisement by our members</h5>
             {link2}
           </div>
         </div>
@@ -67,12 +69,14 @@ const mapStateToProps = (state) => {
 }
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect((props) => [
+  firestoreConnect(
+    
+    (props) => [
     // { collection: 'notice', where: [['displayon', '==', true],['dept','in',state.depts] ]},
     //,where:[['startDate','<',new Date(props.td)]]
-    { collection: 'notice', where: [['createdAt', '>', new Date(props.td - (7 * 24 * 60 * 60 * 1000))]], orderBy: ['createdAt', 'desc'] },
+    { collection: 'notice', where: [ ['createdAt', '>', new Date(props.td - (7 * 24 * 60 * 60 * 1000))]], orderBy: ['createdAt', 'desc'] },
     { collection: 'VisitingDr' },
-    { collection: 'media',where: [['endDate', '>', new Date(props.td - (1 * 24 * 60 * 60 * 1000))]] } 
+    { collection: 'media',where: [['endDate', '>', new Date(props.td - (1 * 24 * 60 * 60 * 1000))]],orderBy: ['endDate', 'desc'] } 
   ]
   )
 )(Dashboard)

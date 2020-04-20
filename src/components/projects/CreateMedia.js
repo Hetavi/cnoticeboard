@@ -8,9 +8,10 @@ import "react-datepicker/dist/react-datepicker.css";
 //import FileUploader from "react-firebase-file-uploader";
 class CreateNotice extends Component {
   state = {
-    title: '',
-    description: '',
-    youtubeID: '',
+    title: this.props.project ? this.props.project.title :'',
+    description: this.props.project ? this.props.project.description :'',
+    youtubeID:this.props.project ? this.props.project.youtubeID : '',
+    docid:this.props.id?this.props.id:null,
     startDate: new Date(),
     endDate: new Date(),
     //followings are for futre use
@@ -47,7 +48,7 @@ class CreateNotice extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.generateMedia(this.state);
-    this.props.history.push('/admin');
+    this.props.history.push('/');
   }
   handleUploadStart = () =>
     this.setState({
@@ -78,61 +79,83 @@ class CreateNotice extends Component {
       isUploading: false
     }));
   };
+  back = (e) => {
+    e.preventDefault();
+    this.props.history.push('/');
+  }
   render() {
+    console.log(this.props)
     const { auth } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' />
+    //if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container section project-editing">
-        <h5>Add Media Clip   </h5>
-        <div className="bg-img"> </div>
+        
+       { /*<div className="bg-img"> </div>*/}
         <form onSubmit={this.handleSubmit}>
           <div className="card z-depth-0">
             <div className="card-content" style={{ padding: '2px' }}>
               <div>
               </div>
             </div>
+
+            {(this.props.profile.role==='owner')? <div className="input-field ">
+              <input type="text" id='youtubeID' onChange={this.handleChange} />
+              <label htmlFor="youtubeID">You Tube ID</label>
+            </div>:null}
+
+            {(this.props.profile.role==='admin'||this.props.profile.role==='owner')?
+            <div className='row'>
+                        <div className='col s6'> <h6>Display from</h6> 
+                          <DatePicker
+                            selected={this.state.startDate}
+                            onChange={this.handleDate}
+                            showTimeSelect
+                            dateFormat="Pp"
+                          />
+                        </div>
+                        <div className='col s6'>
+                        <h6>Display   to</h6>
+                        <DatePicker
+                            selected={this.state.endDate}
+                            onChange={this.handleDate_end}
+                            showTimeSelect
+                            dateFormat="Pp"
+                          />
+                        </div>
+            </div>:null}
+            <h6>Title</h6>
             <div className="input-field ">
-              <input type="text"  id='title' onChange={this.handleChange} />
-              <label htmlFor="title">Title</label>
+              <input type="text"  defaultValue={this.state.title} id='title' onChange={this.handleChange} />
+             
             </div>
             <div>
             </div>
+           
+            <h6>Description</h6>
             <div className="input-field ">
-              <input type="text" id='youtubeID' onChange={this.handleChange} />
-              <label htmlFor="youtubeID">You Tube ID</label>
+              <textarea id='description'  defaultValue={this.state.description} style={{ height: '20rem',textAlign:'justify',lineHeight:'1.5rem'}} onChange={this.handleChange} />
+             
             </div>
-            <div className="input-field ">
-              <textarea id='description' style={{ height: '3rem' }} onChange={this.handleChange} />
-              <label class='active' htmlFor="description">Description</label>
-            </div>
-            <div> <span>Display from </span>
-              <DatePicker
-                selected={this.state.startDate}
-                onChange={this.handleDate}
-                showTimeSelect
-                dateFormat="Pp"
-              />
-            </div>
-            <div><span> Display   to   </span>
-            <DatePicker
-                selected={this.state.endDate}
-                onChange={this.handleDate_end}
-                showTimeSelect
-                dateFormat="Pp"
-              />
-            </div>
-            <div className="input-field">
+            {(this.props.profile.role==='admin'||this.props.profile.role==='owner')?            
               <button className="btn pink lighten-1">Save</button>
-            </div>
+            :null} <button className="btn pink lighten-1" onClick={this.back}>Back</button>
           </div>
         </form>
       </div>
     )
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,ownProps) => {
+  let id = null
+  if (ownProps.match.params.id) { id = ownProps.match.params.id }
+  const projects = state.firestore.data.media;
+  const project = projects ? projects[id] : null
+  console.log(state.firestore)
   return {
-    auth: state.firebase.auth
+    project: project,
+    id: id,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 const mapDispatchToProps = dispatch => {
