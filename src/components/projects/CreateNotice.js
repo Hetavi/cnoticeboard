@@ -12,8 +12,6 @@ class CreateNotice extends Component {
     title: this.props.project ? this.props.project.title : '',
     Body1: this.props.project ? this.props.project.Body1 : '',
     displayon: this.props.project ? this.props.project.displayon : true,
-    createdAt: this.props.project?this.props.project.createdAt:new Date(),
-   
     filenames: [],
     downloadURLs: [],
     isUploading: false,

@@ -20,9 +20,10 @@ const SignedInLinks = (props) => {
     <div>
       {console.log(props.profile)}
       <ul className="right">
+      <li><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></li>  
         {link}
        
-        
+      
         <li><a onClick={props.signOut}>Logout</a></li>
         {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">
           

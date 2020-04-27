@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar1 from './components/layout/Navbar'
 import MediaDash from './components/dashboard/MediaDash'
+
 import Dashboard from './components/dashboard/Dashboard'
 import Dashboard_dr from './components/dashboard/Dashboard_dr'
 import Dashboard_user from './components/dashboard/userDash_main'
@@ -18,7 +19,7 @@ import Dashboard_hosp from './components/dashboard/Dashboard_hosp'
 import edit_hosp from './components/projects/HospDetails'
 import CreatingDr from './components/projects/CreateVisitngDr'
 import CreatingMedia from './components/projects/CreateMedia'
-
+import ListBoard from './components/dashboard/ListBoard'
 import edit_dr from './components/projects/DrDetails'
 import Admin from './components/layout/Navbar2'
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
          
           <Switch>
             <Route exact path='/' component={Dashboard} />
+            <Route exact path='/lists' component={ListBoard} />
             <Route exact path='/dash_dr' component={Dashboard_dr} />
             <Route exact path='/dash_hosp' component={Dashboard_hosp} />
             <Route path='/dash_user' component={Dashboard_user}/>

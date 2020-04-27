@@ -4,18 +4,19 @@ export const generateNotice = (project) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
    
-   
+   console.log(project,authorId)
     if (profile.firstName) {
       firestore.collection('notice').doc(authorId).set({
         ...project,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
-       createdAt:(project.displayon===true)?new Date():project.createdAt
+        createdAt: new Date()
+      //todo date juni method (displayon condition)
       }).then(() => {
         dispatch({ type: 'CREATE_NOTICE_SUCCESS' });
       }).catch(err => {
-        alert('fail',err)
+        alert('Advertise not saved ',err)
         dispatch({ type: 'CREATE_NOTICE_ERROR' }, err);
       });
     } else {

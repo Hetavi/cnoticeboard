@@ -21,7 +21,8 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth,
         profile: state.firebase.profile,
         depts: ['meth2', 'sport'],
-        roles: ['admin', 'unknown','owner'],
+         roles: [ 'unknown','admin'],
+       // roles: ['admin', 'unknown','owner','approved'],
         td: state.auth.td
     }
    
@@ -34,7 +35,7 @@ export default compose(
         //,where:[['startDate','<',new Date(props.td)]]
         // { collection: 'notice', where: [['endDate', '>', new Date(props.td + (0 * 24 * 60 * 60 * 1000))]], orderBy: ['endDate', 'desc'] },
         // { collection: 'VisitingDr', where: [['visitday', 'array-contains', props.value]] },
-        { collection: 'users',where:[['role','in',state.roles]] }
+        { collection: 'users' }
     ]
     )
 )(Dashboard)

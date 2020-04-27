@@ -13,16 +13,18 @@ const Navbar = (props) => {
     <div>
     <nav style={{lineHeight:1.3,height:40}} className="nav-wrapper blue darken-4" >
       <Link to='/' className="brand-logo left">મારુ ભરૂચ</Link>
+  
+  
       {links}
     </nav>
     <div  className="center">
     <Link style={{width:'25%'}} to='/' className="waves-effect waves-light btn-small black">Home</Link>
     <Link style={{width:'25%'}}to='/dash_dr' className="waves-effect   waves-light btn-small  black">Doctors</Link>
     <Link style={{width:'25%'}} to='/dash_hosp' className="waves-effect waves-light btn-small black">Hosp</Link>
+    <Link style={{width:'25%'}} to='/lists' className="waves-effect waves-light btn-small black">Dir</Link>
 
    
-   <div style={{width:'25%'}} className="waves-effect waves-light btn-small black" ><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></div> 
-  
+   
   
     </div></div>
   )
