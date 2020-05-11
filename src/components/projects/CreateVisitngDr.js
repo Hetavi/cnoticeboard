@@ -16,19 +16,19 @@ class CreateProject extends Component {
     this.setState({
       [e.target.id]: e.target.value
     })
-    console.log(e.target.value)
+    //console.log(e.target.value)
   }
   handlecheckbox = (e) => {
     this.setState({
     })
     if (this.state.visitday.includes(e.target.id)) {
-      console.log('loop operated')
+      //console.log('loop operated')
       this.state.visitday = this.state.visitday.filter(val => val !== e.target.id);
     } else {
       this.state.visitday.push(e.target.id)
     }
-    console.log(this.state.visitday.includes(e.target.id))
-    console.log(this.state.visitday)
+    //console.log(this.state.visitday.includes(e.target.id))
+    //console.log(this.state.visitday)
   }
   handleSubmit = (e) => {
     e.preventDefault();

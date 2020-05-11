@@ -34,10 +34,10 @@ class CreateNotice extends Component {
     this.setState({
       [e.target.id]: e.target.value
     })
-    console.log(e.target.value)
+    //console.log(e.target.value)
   }
   handlecheckbox = (e) => {
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     if (e.target.checked) {
       this.setState({ displayon: true })
     }
@@ -84,7 +84,7 @@ class CreateNotice extends Component {
     this.props.history.push('/');
   }
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     const { auth } = this.props;
     //if (!auth.uid) return <Redirect to='/signin' />
     return (
@@ -150,7 +150,7 @@ const mapStateToProps = (state,ownProps) => {
   if (ownProps.match.params.id) { id = ownProps.match.params.id }
   const projects = state.firestore.data.media;
   const project = projects ? projects[id] : null
-  console.log(state.firestore)
+  //console.log(state.firestore)
   return {
     project: project,
     id: id,

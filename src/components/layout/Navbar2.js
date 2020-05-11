@@ -2,7 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 const Navbar2 = (props) => {
-  console.log(props)
+ // //console.log(props)
+ let sgslink=null
+
+
+ 
   let dashlink = null
   if (props.match.path === '/adminboard') {
     dashlink = <div>
@@ -11,6 +15,8 @@ const Navbar2 = (props) => {
       <div><Link to='/hosp'><button style={{ width: '300px', height: '2rem' }}>New Hospitals</button></Link></div>
        <div><Link to='/media'><button style={{ width: '300px', height: '2rem' }}>New News</button></Link></div>
       <div > <Link to='/Old'><button style={{ width: '300px', height: '2rem' }}>Edit old news</button></Link></div>
+      <div><Link to='/dash_user'><button style={{ width: '300px', height: '2rem' }}>{(props.match.path === '/adminboard')?'New Members':'Admin List'}</button></Link></div>
+        <br></br>
     </div>
   }
   return (
@@ -18,8 +24,7 @@ const Navbar2 = (props) => {
       <h3>Dashboard</h3>
       {dashlink}
       <p></p>
-      <div><Link to='/dash_user'><button style={{ width: '300px', height: '2rem' }}>{(props.match.path === '/adminboard')?'New Members':'Admin List'}</button></Link></div>
-    
+      {sgslink}
       <div > <Link to='/create'><button  style={{ width: '300px', height: '2rem' }}>My Advertise</button></Link></div>
       <div><Link to='/signUp'><button style={{ width: '300px', height: '2rem' }}> My Profile</button></Link></div>
     </div>

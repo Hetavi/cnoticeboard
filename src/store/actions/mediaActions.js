@@ -3,7 +3,7 @@ export const generateMedia = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log(project)
+    //console.log(project)
     if (project.docid!==null) {
  
       firestore.collection('media').doc(project.docid).set({

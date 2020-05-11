@@ -20,9 +20,9 @@ class Dashboard extends Component {
   render() {
     const { profile, auth, media, projects, VisitingDr, dayname } = this.props;
     //alert(this.props.td)
-    console.log(media)
-    console.log(this.props.td)
-    console.log('profile')
+    //console.log(media)
+    //console.log(this.props.td)
+    //console.log('profile')
  
     // if (!auth.uid) return <Redirect to='/signin' /> 
     return (
@@ -41,7 +41,7 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+  //console.log(state)
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]

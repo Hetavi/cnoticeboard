@@ -3,21 +3,20 @@ export const generateNotice = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-   
-   //console.log(project,authorId)
+   //console.log(project)
+   //console.log(project[0])
+   //console.log(project[1])
+alert('its me ')
     if (profile.firstName) {
-      firestore.collection('notice').doc(authorId).set({
-        ...project,
-        authorFirstName: profile.firstName,
-        authorLastName: profile.lastName,
-        authorId: authorId,
-        createdAt: new Date()
+      firestore.collection('lists').doc(project[1]).set({
+        ...project[0],
+        createdAt:new Date()
       //todo date juni method (displayon condition)
       }).then(() => {
-        dispatch({ type: 'CREATE_NOTICE_SUCCESS' });
+        dispatch({ type: 'CREATE_LISTS_SUCCESS' });
       }).catch(err => {
         alert('Advertise not saved ',err)
-        dispatch({ type: 'CREATE_NOTICE_ERROR' }, err);
+        dispatch({ type: 'CREATE_LISTS_ERROR' }, err);
       });
     } else {
       alert ('You are not authorised ')

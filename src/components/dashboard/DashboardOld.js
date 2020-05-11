@@ -19,9 +19,9 @@ class DashboardOld extends Component {
   };
   render() {
     const {profile,auth, projects, VisitingDr, notifications, dayname } = this.props;
-    console.log(projects)
-    console.log(dayname)
-    console.log('profile')
+    //console.log(projects)
+    //console.log(dayname)
+    //console.log('profile')
   const link1=<p>Please wait..</p>
   const link2=  <ProjectList projects={projects} />
     // if (!auth.uid) return <Redirect to='/signin' /> 

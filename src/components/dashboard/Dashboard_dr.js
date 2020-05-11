@@ -15,8 +15,12 @@ class Dashboard extends Component {
     const { value } = event.target;
     this.setState({ value });
   };
+  handleChange2 = event => {
+    console.log(event.target.id)
+    this.setState({ value:event.target.id });
+  };
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
     const { VisitingDr } = this.props;
     if (VisitingDr) {
@@ -35,13 +39,21 @@ class Dashboard extends Component {
               <a href="tel:+912642203090"> <button style={{width:'22%'}}className='btn-tiny'  >Regi..</button></a>
               <a href="tel:+912642203093"> <button style={{width:'22%'}}className='btn-tiny'  >Dispensing</button></a>
               <a href="tel:+912642203091"> <button style={{width:'22%'}}className='btn-tiny'  >Nursing </button></a>
-              <a href="tel:+91264220304"> <button style={{width:'22%'}} className='btn-tiny'  >Bill-Help </button></a>
+              <a href="tel:+912642203094"> <button style={{width:'22%'}} className='btn-tiny'  >Bill-Desk </button></a>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">search</i>
               <input id="search" type="text" value={this.state.value} onChange={this.handleChange} />
-              
-            </div>
+              <button id='' onClick={this.handleChange2}>All</button>
+              <button id='mon' onClick={this.handleChange2}>સોમ</button>
+              <button id='tue' onClick={this.handleChange2}>મંગળ</button>
+              <button id='wed' onClick={this.handleChange2}>બુધ</button>
+              <button id='thu' onClick={this.handleChange2}>ગુરુ</button>
+              <button id='fri' onClick={this.handleChange2}>શુક્ર</button>
+              <button id='sat' onClick={this.handleChange2}>શનિ</button>
+              <button id='sun' onClick={this.handleChange2}>રવિ </button>
+                                      
+              </div>
           </div>
           <div className="row">
             <div className="col s12 m5 ">

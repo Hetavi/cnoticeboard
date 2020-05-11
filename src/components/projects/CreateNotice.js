@@ -31,10 +31,10 @@ class CreateNotice extends Component {
     this.setState({
       [e.target.id]: e.target.value
     })
-    console.log(e.target.value)
+    //console.log(e.target.value)
   }
   handlecheckbox = (e) => {
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     if (e.target.checked) {
       this.setState({ displayon: true })
     }
@@ -84,9 +84,9 @@ class CreateNotice extends Component {
   }
   render() {
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
-    console.log(this.props)
+    //console.log(this.props)
     
-console.log(this.state.forhide);
+//console.log(this.state.forhide);
     const { auth, profile } = this.props;
     let link = null
     let Enab = true
@@ -177,7 +177,7 @@ const mapStateToProps = (state, ownProps) => {
   if (ownProps.match.params.id) { id = ownProps.match.params.id }
   const projects = state.firestore.data.notice;
   const project = projects ? projects[id] : null
-  console.log(state.firestore)
+  //console.log(state.firestore)
   return {
     project: project,
     id: id,

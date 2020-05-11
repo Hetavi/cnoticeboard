@@ -17,17 +17,11 @@ class Dashboard extends Component {
     this.setState({ value });
   };
   render() {
-   // if(this.props.history.action==='POP')return <Redirect to='/' /> 
     const { profile, auth, users } = this.props;
-    //alert(this.props.td)
-   
     const link2 = users ? <UserList projects={this.props} /> : <p>Please wait..</p>
      if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container">
-        <div>{moment(this.props.td).format('MMMM Do YYYY, h:mm:ss a')}
-       {/* <h6>આપણો બ્લોગ</h6> */}
-        </div>
         <div className="row">
           <div className="col s12 m6">
           {link2} 
@@ -38,7 +32,7 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+  //console.log(state)
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]

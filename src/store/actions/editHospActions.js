@@ -3,8 +3,8 @@ export const editHospActions = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log('Edit project action')
-    console.log(project.docid)
+    //console.log('Edit project action')
+    //console.log(project.docid)
     if (profile.firstName) {
       firestore.collection('hosp').doc(project.docid).set({
         ...project,

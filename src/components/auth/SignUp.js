@@ -31,8 +31,8 @@ class SignUp extends Component {
   }
   render() {
     const { auth, authError } = this.props;
-    console.log(this.props.profile.firstName)
-    console.log(this.state)
+    //console.log(this.props.profile.firstName)
+    //console.log(this.state)
  
   //  if (auth.uid) return <Redirect to='/' /> 
   if(this.props.history.action==='POP')return <Redirect to='/' /> 
@@ -82,10 +82,10 @@ class SignUp extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state.firebase.profile)
+  //console.log(state.firebase.profile)
   let role=''
   if (state.firebase.profile.role){ role =state.firebase.profile.role  }else{{ role='unknown'}} ;
-  console.log('gfgsgfsd')
+  //console.log('gfgsgfsd')
   return {
     auth: state.firebase.auth,
     profile:state.firebase.profile,

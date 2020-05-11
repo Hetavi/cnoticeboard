@@ -20,9 +20,9 @@ class Dashboard extends Component {
   render() {
     const { profile, auth, media, projects, VisitingDr, dayname } = this.props;
     //alert(this.props.td)
-    console.log(media)
-    console.log(this.props.td)
-    console.log('profile')
+    //console.log(media)
+    //console.log(this.props.td)
+    //console.log('profile')
 
     const link1 = VisitingDr ? <DrList VisitingDr={VisitingDr} /> : <p>Please wait..</p>
     const link2 = projects ? <ProjectList projects={projects} /> : <div class="progress">
@@ -50,7 +50,7 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+  //console.log(state)
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]

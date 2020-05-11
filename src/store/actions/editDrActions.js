@@ -3,8 +3,8 @@ export const editDrActions = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log('Edit project action')
-    console.log(project)
+    //console.log('Edit project action')
+    //console.log(project)
 
     if (profile.firstName) {
       firestore.collection('VisitingDr').doc(project.docid).set({

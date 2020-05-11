@@ -22,13 +22,13 @@ class NoticeDetails extends Component {
   }
  
   handleChange = (e) => {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.setState({
       [e.target.id]: e.target.value
     })
   }
   handlecheckbox = (e) => {
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     if (e.target.checked) {
       this.setState({ displayon: true })
     }
@@ -38,7 +38,7 @@ class NoticeDetails extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     this.props.editNoticeActions(this.state);
     this.props.history.push('/');
   }
@@ -46,8 +46,8 @@ class NoticeDetails extends Component {
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
   
-    console.log(this.props.auth.id)
-    console.log('this.state')
+    //console.log(this.props.auth.id)
+    //console.log('this.state')
     return (
       <div disable className="container section project-editing">
         {this.props.auth.uid ? <h3>Edit NEWS</h3> : <h3>NEWS</h3>}

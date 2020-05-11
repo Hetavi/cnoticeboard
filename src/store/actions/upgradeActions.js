@@ -3,7 +3,7 @@ export const upgradeActions = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log(project)
+    //console.log(project)
     let role = 'approved'
     if (profile.role === "owner") { role = 'admin' }
     firestore.collection('users').doc(project.docid).set({

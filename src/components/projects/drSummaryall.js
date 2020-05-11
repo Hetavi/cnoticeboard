@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 const NoticeSummary = ({ project}) => {
-  console.log()
+  //console.log()
   
   
   return (

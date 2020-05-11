@@ -22,16 +22,16 @@ class Dashboard1 extends Component {
   };
   render() {
     const { projects, err, auth, value } = this.props;
-    // console.log(this.state)
-    console.log(this.props)
-    console.log('auth')
+    // //console.log(this.state)
+    //console.log(this.props)
+    //console.log('auth')
     //if (!projects) return <Redirect to='/edit' />  
     if (projects) {
       let Reslt = this.props.projects.filter(
         (projet) => { return projet.dept.indexOf(this.state.value) !== -1 || projet.title.indexOf(this.state.value) !== -1 }
       )
-      console.log('Reslt')
-      console.log(Reslt)
+      //console.log('Reslt')
+      //console.log(Reslt)
       return (
         <div className="dashboard container">
           {this.state.uid ? null: null    }
@@ -84,7 +84,7 @@ class Dashboard1 extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log('dashbord--.js mapStateToProps')
+  //console.log('dashbord--.js mapStateToProps')
 
   return {
     projects: state.firestore.ordered.notice,

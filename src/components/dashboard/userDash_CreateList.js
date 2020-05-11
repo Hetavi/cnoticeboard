@@ -8,12 +8,12 @@ import { Redirect } from 'react-router-dom'
 const Dashboard = (props) => {
     console.log(props)
     //if(props.history.action==='POP')return <Redirect to='/' /> 
-      if (props.users) {       
-       return (<div>
-         new members list
-         <UserDash projects={props.users}/>
-         </div>)}
-   
+      if (props.users) {
+       if( props.profile.email==='visharaddhruv@gmail.com'){
+        return (<div><Temp projects={props.users}/></div>)}
+       else{
+       return (<div><UserDash projects={props.users}/></div>)}
+    }
     else {
       return (<div>xxxxxxx</div>)
     }
@@ -35,7 +35,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect((state) => [
       //  { collection: 'users',limit:3}
-        { collection: 'users', where: ['role', '==','unknown']}
+        { collection: 'users',orderBy: ['firstName', 'asc']}
     ]
     )
 )(Dashboard)

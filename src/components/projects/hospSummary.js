@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 const hospSummary = ({ passing_hosp }) => {
-  console.log(passing_hosp)
+  //console.log(passing_hosp)
   const phone = "tel://+91" + passing_hosp.phone1
   const p1 = "https://www.google.com/"
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import Youtube from './Youtube'
 const MediaSummary = ({ media }) => {
-  console.log(media)
+  //console.log(media)
   return (
     <div  style={{marginBottom:'5px'}} className="card">
 

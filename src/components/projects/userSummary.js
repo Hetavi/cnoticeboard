@@ -9,7 +9,7 @@ const NoticeSummary = ({ project }) => {
     const li2=project.Mobile
     const link=li.concat(li2)
     const walink=wa.concat(li2)
-    console.log(project)
+    //console.log(project)
     
   return (
     <div className='card'  >

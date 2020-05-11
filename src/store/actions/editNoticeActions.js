@@ -3,8 +3,8 @@ export const editNoticeActions = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    console.log('Edit project action')
-    console.log(project.docid)
+    //console.log('Edit project action')
+    //console.log(project.docid)
     if (!project.downloadURLs){project.downloadURLs=''}
     if (profile.firstName) {
       firestore.collection('notice').doc(project.docid).set({

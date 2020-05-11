@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 const SignedInLinks = (props) => {
   const { auth, profile } = props;
-  console.log(profile.id)
+  //console.log(profile.id)
   let link=null
   {/*
   switch case
@@ -18,7 +18,7 @@ const SignedInLinks = (props) => {
 }else{link=<li><NavLink to='/userboard'><u>{props.profile.firstName?props.profile.firstName:'Add Profile '}</u></NavLink></li>}
   return (
     <div>
-      {console.log(props.profile)}
+     
       <ul className="right">
       <li><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></li>  
         {link}

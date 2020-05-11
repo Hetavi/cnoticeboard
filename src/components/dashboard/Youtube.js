@@ -16,8 +16,8 @@ const Youtube = (movie) => {
       document.getElementById('embed-code').innerHTML = embedCode;
     }
   }
-  console.log(movie)
-  console.log('movie')
+  //console.log(movie)
+  //console.log('movie')
   return (
     <div>
       <YouTube

@@ -3,7 +3,7 @@ import UserSummary from './userSummary'
 import { Link } from 'react-router-dom'
 class DrList extends Component {
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         var _queryURL = window.location.href;
         var n = _queryURL.includes("dash_dr");
         var i = 0
@@ -21,7 +21,7 @@ class DrList extends Component {
                             var res = str.concat( project.Mobile, midd, project.firstName, ' ', project.lastName, midd,project.role,midd, project.Dept, midd,project.approvedby,midd,project.email,bigi);
                             str = res
                             i=i+1
-                            console.log(str)
+                            //console.log(str)
                             if (this.props.projects.profile.role == 'admin' || this.props.projects.profile.role == 'owner') return (
                                 (project.role === 'approved') ? <UserSummary project={project} /> : null
                             )

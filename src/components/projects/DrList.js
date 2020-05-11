@@ -8,7 +8,7 @@ class DrList extends Component {
         var n = _queryURL.includes("dash_dr");
         if (this.props.VisitingDr.length > 0) {
             const links = !n ? <h5><u>Today's Visiting Dr</u></h5> : <h5>List Of Visiting Dr.</h5>;
-            console.log(this.props)
+            //console.log(this.props)
             return (
                 <div >
                     {links}

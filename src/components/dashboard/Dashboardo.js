@@ -26,9 +26,9 @@ class Dashboard extends Component {
   };
   render() {
     const { profile, projects, drlist, err, auth, value } = this.props;
-    console.log(this.state.auth)
-    console.log(profile)
-    console.log('profile')
+    //console.log(this.state.auth)
+    //console.log(profile)
+    //console.log('profile')
     //if (!projects) return <Redirect to='/edit' />  
    
     if (projects) {
@@ -39,8 +39,8 @@ class Dashboard extends Component {
             projet.Body1.indexOf(this.state.value) !== -1
         }
       )
-      console.log('Reslt')
-      console.log(Reslt)
+      //console.log('Reslt')
+      //console.log(Reslt)
      
       return (
         <div className="dashboard container">
@@ -133,7 +133,7 @@ class Dashboard extends Component {
   
 }
 const mapStateToProps = (state) => {
-  // console.log('dashbord--.js mapStateToProps')
+  // //console.log('dashbord--.js mapStateToProps')
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   //console.log(daynm)

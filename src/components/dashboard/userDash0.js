@@ -18,8 +18,10 @@ class Dashboard extends Component {
   };
   render() {
     // if(this.props.history.action==='POP')return <Redirect to='/' /> 
+    console.log(this.props)
+    alert('userdash 0')
+    //console.log(JSON.parse(this.props.lists))
     const { profile, auth, lists } = this.props;
-    
     const link2 = lists ? <UserList projects={this.props} /> : <p>Please wait..</p>
     if (!auth.uid) return <Redirect to='/signin' />
     //console.log(lists[0].list)
@@ -30,9 +32,9 @@ class Dashboard extends Component {
     splitted.map(list => {
       return (a.push(list.split("##*")))
     })
-    // console.log(a)
+    // //console.log(a)
     //make search component
-    if (a.length > 1) { 
+    if (a.length > 1) {
       let dr_array = a.filter(
         (dr_elements) => {
           return dr_elements[0].toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 ||
@@ -41,10 +43,12 @@ class Dashboard extends Component {
         })
       return (
         <div className="dashboard container">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">search</i>
+           <div className="row">
+             <div className="input-field col s6">
+            <i className="material-icons prefix">search</i>
             <input id="search" type="text" value={this.state.value} onChange={this.handleChange} />
           </div>
+           </div>
           <div className="row">
             <div className="col s12 m6">
               {dr_array.map(list => {
@@ -52,12 +56,11 @@ class Dashboard extends Component {
               })}
             </div></div></div>
       )
-    } else { return <div>Please Wait</div>}
-   
+    } else { return <div>Please Wait</div> }
   }
 }
 const mapStateToProps = (state) => {
-  // console.log(state)
+  // //console.log(state)
   return {
     lists: state.firestore.ordered.lists,
     auth: state.firebase.auth,

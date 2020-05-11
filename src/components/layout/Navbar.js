@@ -22,6 +22,7 @@ const Navbar = (props) => {
     <Link style={{width:'25%'}}to='/dash_dr' className="waves-effect   waves-light btn-small  black">Doctors</Link>
     <Link style={{width:'25%'}} to='/dash_hosp' className="waves-effect waves-light btn-small black">Hosp</Link>
     <Link style={{width:'25%'}} to='/lists' className="waves-effect waves-light btn-small black">Dir</Link>
+    
 
    
    
@@ -30,9 +31,9 @@ const Navbar = (props) => {
   )
 }
 const mapStateToProps = (state) => {
-  console.log(state.firebase.profile)
+  //console.log(state.firebase.profile)
   
-  console.log('dsfdsfsd')
+  //console.log('dsfdsfsd')
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile,  

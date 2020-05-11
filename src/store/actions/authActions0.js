@@ -6,9 +6,9 @@ export const signIn = (credentials) => {
     provider.addScope('email');
     firebase.auth().signInWithPopup(provider).then(() => {
       dispatch({ type: 'LOGIN_SUCCESS' });
-      console.log('authAction')
+      //console.log('authAction')
       window.location.reload(true);
-      console.log()
+      //console.log()
     }).catch((err) => {
       dispatch({ type: 'LOGIN_ERROR', err });
     });
@@ -39,7 +39,7 @@ export const signUp = (newUser) => {
         email:resp.user.email,     
         initials: newUser.firstName[0] + newUser.lastName[0]        
       },{ merge: true });
-    }).then(console.log('authAction')).then(() => {     
+    }).then(//console.log('authAction')).then(() => {     
       dispatch({ type: 'SIGNUP_SUCCESS' });
     }).catch((err) => {
       alert('Updating Fail')

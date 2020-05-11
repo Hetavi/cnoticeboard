@@ -15,21 +15,21 @@ class MediaDetails extends Component {
     }
   }
   handleChange = (e) => {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.setState({
       [e.target.id]: e.target.value
     })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
+    //console.log(this.state)
     //this.props.editMediaActions(this.state);
     this.props.history.push('/');
   }
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
-    console.log(this.props.auth.id)
-    console.log('this.state')
+    //console.log(this.props.auth.id)
+    //console.log('this.state')
     return (
       <div disable className="container section media-editing">
         {this.props.auth.uid ? <h3>Edit NEWS</h3> : <h3>NEWS</h3>}

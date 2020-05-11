@@ -1,8 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 const NoticeSummary = ({ project}) => {
-  console.log(project.createdAt)
-  console.log('project.createdAt')
+  //console.log(project.createdAt)
+  //console.log('project.createdAt')
   return (
     <div className=" container ">
       <div className='card z-depth-1'  >

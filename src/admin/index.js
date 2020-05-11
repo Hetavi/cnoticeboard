@@ -23,7 +23,7 @@ export default () => {
   };
 
   const updateItem = ({ currentItem }, updatedItem) => {
-    console.log(
+    //console.log(
       "It send the item to the updated item function:",
       updatedItem,
       currentItem.id

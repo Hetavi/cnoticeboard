@@ -1,24 +1,24 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-const NoticeSummary = ({ list }) => {
- 
+const NoticeSummary = ({ person }) => {
+  //console.log(person)
+  var splt = person.split("#");
+  // console.log(splt)
   const li = "tel:+"
   const wa = "https://wa.me/"
-  const walink = wa.concat(list[0])
-  const link = li.concat(list[0])
-  const approvedby = (e) => {
-    alert('Approved by ' + list[4])
-  }
+  const walink = wa.concat(splt[1])
+  const link = li.concat(splt[1])
+                const approvedby = (e) => {
+                  alert('Approved by ' + person[4])
+                }
   return (
     <div className='card'  >
-      {(list[2] !== "unknown") ? <button onClick={approvedby}><i class="tiny material-icons">verified_user</i></button> : null}
-      <a href={link}> <button><i class="tiny material-icons">call</i></button> </a>
+       <a href={link}> <button ><i className="tiny material-icons">call</i></button> </a>
       <a href={walink}><button>Wa</button></a>
-      <span className="black-text" ><b>{list[1]}</b> </span>
+      <span className="black-text" ><b>{splt[0]}</b> </span>{splt[2]}
       <div>
-        {list[3]},
-          {list[5]}
+        
       </div>
     </div >
   )

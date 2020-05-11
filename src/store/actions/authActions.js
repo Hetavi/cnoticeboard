@@ -7,9 +7,9 @@ export const signIn = (credentials) => {
     provider.addScope('email');
     firebase.auth().signInWithPopup(provider).then(() => {
       dispatch({ type: 'LOGIN_SUCCESS' });
-      console.log('authAction')
+      //console.log('authAction')
       window.location.reload(true);
-      console.log()
+      //console.log()
     }).catch((err) => {
       dispatch({ type: 'LOGIN_ERROR', err });
     });

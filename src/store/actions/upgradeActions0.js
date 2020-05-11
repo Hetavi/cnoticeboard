@@ -5,7 +5,7 @@ export const upgradeActions = (newUser) => {
     var provider = new firebase.auth.GoogleAuthProvider();
      provider.addScope('profile');
     provider.addScope('email');
-    console.log(newUser)
+    //console.log(newUser)
     alert(provider.email)
     firebase.auth().signInWithPopup(provider).then(resp => {
       return firestore.collection('users').doc(newUser.docid).set({

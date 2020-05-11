@@ -21,13 +21,13 @@ class NoticeDetails extends Component {
   }
 
   handleChange = (e) => {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.setState({
       [e.target.id]: e.target.value
     })
   }
   handlecheckbox = (e) => {
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     if (e.target.checked) {
       this.setState({ displayon: true })
     }
@@ -48,8 +48,8 @@ class NoticeDetails extends Component {
   render() {
    // if (!this.props.project) return <Redirect to='/dash_user' /> 
   
-    console.log(this.props)
-    console.log('this.state')
+    //console.log(this.props)
+    //console.log('this.state')
     let btnlink=null  
     //if (this.props.profile.identity='admin'){alert({this.props.profile.identity})}
    if(this.props.project.role==='unknown')

@@ -17,7 +17,7 @@ class HospDetails extends Component {
     }
   }
   handleChange = (e) => {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -26,17 +26,17 @@ class HospDetails extends Component {
     this.setState({
     })
     if (this.state.visitday.includes(e.target.id)) {
-      console.log('loop operated')
+      //console.log('loop operated')
       this.state.visitday = this.state.visitday.filter(val => val !== e.target.id);
     } else {
       this.state.visitday.push(e.target.id)
     }
-    console.log(this.state.visitday.includes(e.target.id))
-    console.log(this.state.visitday)
+    //console.log(this.state.visitday.includes(e.target.id))
+    //console.log(this.state.visitday)
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
+    //console.log(this.state)
     this.props.editDrActions(this.state);
     this.props.history.push('/dash_dr');
   }
@@ -47,8 +47,8 @@ class HospDetails extends Component {
   render() {
     //if (!auth.uid) return <Redirect to='/signin' /> 
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
-    console.log(this.props)
-    console.log('this.state')
+    //console.log(this.props)
+    //console.log('this.state')
     var n0 = this.state.visitday.includes("sun")
     var n1 = this.state.visitday.includes("mon")
     var n2 = this.state.visitday.includes("tue")

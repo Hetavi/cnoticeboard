@@ -3,8 +3,8 @@ import MediaSummary from './mediaSummary'
 import { Link } from 'react-router-dom'
 class MediaList extends Component {
     render() {
-        console.log(this.props.media)
-        console.log('this.props.media')
+        //console.log(this.props.media)
+        //console.log('this.props.media')
         return (
             <div>
             <div className="Media-list ">

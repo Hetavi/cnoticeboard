@@ -26,7 +26,7 @@ class Dashboard extends Component {
   render() {
     const { hosp_props, err, auth, value,profile } = this.props;
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
-    console.log(profile)
+    //console.log(profile)
     if (hosp_props) {
       let hosp_array = this.props.hosp_props.filter(
         (hosp_elements) => {
@@ -74,7 +74,7 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  // console.log('dashbord--.js mapStateToProps')
+  // //console.log('dashbord--.js mapStateToProps')
   let dayn = new Date().getDay()
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   //console.log(daynm)

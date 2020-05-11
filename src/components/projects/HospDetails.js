@@ -22,13 +22,13 @@ class HospDetails extends Component {
     }
   }
   handleChange = (e) => {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.setState({
       [e.target.id]: e.target.value
     })
   }
   handlecheckbox = (e) => {
-    console.log(this.state.displayon)
+    //console.log(this.state.displayon)
     if (e.target.checked) {
       this.setState({ displayon: true })
     }
@@ -38,7 +38,7 @@ class HospDetails extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.displayon);
+    //console.log(this.state.displayon);
     hospName: this.state.hospName.trim();
     city: this.state.city.trim();
     this.props.editHospActions(this.state);
@@ -52,8 +52,8 @@ class HospDetails extends Component {
     //if (!auth.uid) return <Redirect to='/signin' /> 
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
   
-    console.log(this.props)
-    console.log('this.state')
+    //console.log(this.props)
+    //console.log('this.state')
     let btnlink = null
     let Enab = true
     if (this.props.profile.isEmpty === true) { Enab = true }
