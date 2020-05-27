@@ -6,13 +6,16 @@ import { signUp } from '../../store/actions/authActions'
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {   
-    firstName:this.props.profile.firstName ?this.props.profile.firstName:'',
-    lastName:this.props.profile.lastName?this.props.profile.lastName:'' ,
-    Dept:this.props.profile.Dept?this.props.profile.Dept:'',
-    Mobile:this.props.profile.Mobile?this.props.profile.Mobile:'',
-    role:this.props.role?this.props.role:'unknown'
-  }}
+    this.state = {
+      firstName: this.props.profile.firstName ? this.props.profile.firstName : '',
+      lastName: this.props.profile.lastName ? this.props.profile.lastName : '',
+      Dept: this.props.profile.Dept ? this.props.profile.Dept : '',
+      Mobile: this.props.profile.Mobile ? this.props.profile.Mobile : '',
+      role: this.props.role ? this.props.role : 'unknown',
+      olddata:this.props.profile.firstName?this.props.profile.Mobile+'#'+this.props.profile.firstName+' '+this.props.profile.lastName+'#'+this.props.profile.Dept:null,
+      userDoc: this.props.profile.userDoc?this.props.profile.userDoc:this.props.userDoc
+    }
+  }
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -20,32 +23,38 @@ class SignUp extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    if(this.state.firstName.length<1 ){alert('Please enter Name')
-  }else if(this.state.lastName.length<1){alert('Please Enter Last Name')
-}else if(this.state.Dept.length<1){alert('Please Enter Group')
-}else if(this.state.Mobile<10000000000){alert('Please Enter Mobile with contry code without + sign')
-}else{this.props.signUp(this.state);
-  this.props.history.push('/');
-}
-   // 
+    if (this.state.firstName.length < 1) {
+      alert('Please enter Name')
+    } else if (this.state.lastName.length < 1) {
+      alert('Please Enter Last Name')
+    } else if (this.state.Dept.length < 1) {
+      alert('Please Enter Group')
+    } else if (this.state.Mobile < 10000000000) {
+      alert('Please Enter Mobile with contry code without + sign')
+    } else {
+      console.log(this.state)
+      this.props.signUp(this.state);
+      this.props.history.push('/');
+    }
+    // 
   }
   render() {
     const { auth, authError } = this.props;
     //console.log(this.props.profile.firstName)
-    //console.log(this.state)
- 
-  //  if (auth.uid) return <Redirect to='/' /> 
-  if(this.props.history.action==='POP')return <Redirect to='/' /> 
-  if (this.state){
-  return (
-      <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Profile:
-          {(this.state.role==='unknown')?null:this.state.role}
-          </h5>
-          {(this.state.role==='unknown')?'Please contact any admin for approval':null}
-          <p></p>
-        {/*  <div className="input-field">
+    console.log(this.state)
+    console.log(this.props.usersarray)
+    //  if (auth.uid) return <Redirect to='/' /> 
+    if (this.props.history.action === 'POP') return <Redirect to='/' />
+    if (this.state) {
+      return (
+        <div className="container">
+          <form className="white" onSubmit={this.handleSubmit}>
+            <h5 className="grey-text text-darken-3">Profile:
+          {(this.state.role === 'unknown') ? null : this.state.role}
+            </h5>
+            {(this.state.role === 'unknown') ? 'Please contact any admin for approval' : null}
+            <p></p>
+            {/*  <div className="input-field">
             <label htmlFor="email">Email</label>
             <input type="email" id='email' onChange={this.handleChange} />
           </div>
@@ -53,49 +62,71 @@ class SignUp extends Component {
             <label htmlFor="password">Password</label>
             <input type="password" id='password' onChange={this.handleChange} />
     </div>*/}
-          <div className="input-field ">
-            <label  className='active' htmlFor="firstName">First Name</label>
-            <input type="text" defaultValue={this.state.firstName} id='firstName' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label className='active' htmlFor="lastName">Last Name</label>
-            <input   defaultValue={this.state.lastName} type="text" id='lastName' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label className='active' htmlFor="Dept">Dept</label>
-            <input  defaultValue={this.state.Dept} type="text"  id='Dept' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label className='active' htmlFor="Mobile">Mobile</label>
-            <input  defaultValue={this.state.Mobile} type='number'  id='Mobile' onChange={this.handleChange} />
-            <span class="helper-text">Country code+ mobile no(without + sign )</span>
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Validate </button>
-            <div className="center red-text">
-              { authError ? <p>{authError}</p> : null }
+            <div className="input-field ">
+              <label className='active' htmlFor="firstName">First Name</label>
+              <input type="text" defaultValue={this.state.firstName} id='firstName' onChange={this.handleChange} />
             </div>
-          </div>
-        </form>
-      </div>
-    )}else {return <p>please wait</p>}
+            <div className="input-field">
+              <label className='active' htmlFor="lastName">Last Name</label>
+              <input defaultValue={this.state.lastName} type="text" id='lastName' onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+              <label className='active' htmlFor="Dept">Dept</label>
+              <input defaultValue={this.state.Dept} type="text" id='Dept' onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+              <label className='active' htmlFor="Mobile">Mobile</label>
+              <input defaultValue={this.state.Mobile} type='number' id='Mobile' onChange={this.handleChange} />
+              <span class="helper-text">Country code+ mobile no(without + sign )</span>
+            </div>
+            <div className="input-field">
+              <button className="btn pink lighten-1 z-depth-0">Validate </button>
+              <div className="center red-text">
+                {authError ? <p>{authError}</p> : null}
+              </div>
+            </div>
+          </form>
+        </div>
+      )
+    } else { return <p>please wait</p> }
   }
 }
 const mapStateToProps = (state) => {
-  //console.log(state.firebase.profile)
-  let role=''
-  if (state.firebase.profile.role){ role =state.firebase.profile.role  }else{{ role='unknown'}} ;
+  console.log(state.firestore.data.usersarray)
+  let userDoc=0
+  if (state.firestore.data.usersarray) {
+    console.log(state.firestore.data.usersarray.length) 
+ let i = 0
+ for (let key in state.firestore.data.usersarray) {
+   i = i + 1
+   // keys
+   // alert( key );  // name, age, isAdmin
+   // values for the keys
+   console.log(state.firestore.data.usersarray[key]); // John, 30, true
+   console.log(state.firestore.data.usersarray[i])
+ }
+ console.log(i)
+ if (state.firestore.data.usersarray[i].list_arr.length < 4000) {
+     userDoc= i
+ } else {
+     userDoc= i + 1
+ }
+}
+  let role = ''
+  if (state.firebase.profile.role) { role = state.firebase.profile.role } else { { role = 'unknown' } };
   //console.log('gfgsgfsd')
   return {
     auth: state.firebase.auth,
-    profile:state.firebase.profile,
+    profile: state.firebase.profile,
     authError: state.auth.authError,
-    role:role
+    usersarray: state.firestore.data.usersarray,
+    userDoc: userDoc,
+    role: role
   }
 }
-const mapDispatchToProps = (dispatch)=> {
+const mapDispatchToProps = (dispatch) => {
   return {
     signUp: (creds) => dispatch(signUp(creds))
   }
 }
-export default  connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

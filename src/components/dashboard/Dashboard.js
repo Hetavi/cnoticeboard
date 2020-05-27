@@ -22,7 +22,12 @@ class Dashboard extends Component {
     console.log(this.props.profile.email)
    let  sgslink=null
     if (this.props.profile.email==='visharaddhruv@gmail.com'){
-      sgslink=<div><Link to='/createlist'><button style={{ width: '300px', height: '2rem' }}>Create Users List (sgs)</button></Link></div>
+      sgslink=<div>
+        બધા ડોક્યુમેન્ટ ને ડૅશબોળ માં જ રીડ કરવા<br/>
+        <Link to='/createlist'><button style={{ width: '300px', height: '2rem' }}>
+          Create Users List (sgs)</button>
+          </Link>
+          </div>
      }
     return (
       <div className="dashboard container">

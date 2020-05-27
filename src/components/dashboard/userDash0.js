@@ -18,8 +18,7 @@ class Dashboard extends Component {
   };
   render() {
     // if(this.props.history.action==='POP')return <Redirect to='/' /> 
-    console.log(this.props)
-    alert('userdash 0')
+    //console.log(this.props.lists)
     //console.log(JSON.parse(this.props.lists))
     const { profile, auth, lists } = this.props;
     const link2 = lists ? <UserList projects={this.props} /> : <p>Please wait..</p>

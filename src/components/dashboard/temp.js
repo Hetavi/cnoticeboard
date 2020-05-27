@@ -11,17 +11,19 @@ function Example(pp) {
   });
   var newarr = []
   const a = () => {
-    newarr = pp.projects.map(project => {
-      return (project.firstName + ' ' + project.lastName + '#' + project.Mobile + '#' + project.Dept)
+     pp.projects.map(project => {
+      pp.generateNotice(project)
     })
   }
+  
   const b = () => {
     var nn = newarr.length / (2000);
     //nn= Math.ceil(nn)
     var i;
     for (i = 0; i < nn; i++) {
       var newarr1 = newarr.slice(i * 2000, (((i + 1) * 2000) - 1))
-      pp.generateNotice([newarr1, i.toString()]);
+      console.log(i.toString())
+     // pp.generateNotice([newarr1, i.toString()]);
     }
     setCount(count + 1);
     //setList(str)
@@ -58,7 +60,7 @@ function Example(pp) {
 const mapStateToProps = (state) => {
   const projects = state.firestore.data.users;
   return {
-    // project: projects,
+     project: projects,
     auth: state.firebase.auth,
     profile: state.firebase.profile
   }

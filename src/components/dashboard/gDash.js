@@ -17,13 +17,25 @@ class Dashboard extends Component {
     const { value } = event.target;
     this.setState({ value });
   };
+  componentDidMount(){
+    console.log(this.state.usersarray)
+    
+  }
   render() {
-    const { profile, auth, media, projects, VisitingDr, dayname } = this.props;
+    const { profile, auth,usersarray, media, projects, VisitingDr, dayname } = this.props;
     //alert(this.props.td)
-    //console.log(media)
+   if (usersarray){console.log(usersarray.length)}
     //console.log(this.props.td)
     //console.log('profile')
-
+    let i=0
+    for (let key in usersarray) {
+      i=i+1
+      // keys
+     // alert( key );  // name, age, isAdmin
+      // values for the keys
+      console.log( usersarray[key]); // John, 30, true
+    }
+console.log(i)
     const link1 = VisitingDr ? <DrList VisitingDr={VisitingDr} /> : <p>Please wait..</p>
     const link2 = projects ? <ProjectList projects={projects} /> : <div class="progress">
     <div class="indeterminate"></div>
@@ -55,11 +67,13 @@ const mapStateToProps = (state) => {
   let daynm = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const dayname = daynm[dayn]
   // 
+ // console.log(this.state.usersarray)
   return {
     projects: state.firestore.ordered.notice,
     VisitingDr: state.firestore.ordered.VisitingDr,
     media: state.firestore.ordered.media,
     auth: state.firebase.auth,
+    usersarray:state.firestore.ordered.usersarray,
     profile: state.firebase.profile,
     notifications: state.firestore.ordered.notifications,
     depts: ['meth2', 'sport'],
@@ -76,6 +90,7 @@ export default compose(
     //,where:[['startDate','<',new Date(props.td)]]
     { collection: 'notice', where: [ ['createdAt', '>', new Date(props.td - (7 * 24 * 60 * 60 * 1000))]], orderBy: ['createdAt', 'desc'] },
     { collection: 'VisitingDr' },
+    {collection: 'usersarray'},
     { collection: 'media',where: [['endDate', '>', new Date(props.td - (1 * 24 * 60 * 60 * 1000))]],orderBy: ['endDate', 'desc'] } 
   ]
   )

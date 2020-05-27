@@ -3,15 +3,16 @@ export const generateNotice = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-   //console.log(project)
+   console.log(project)
    //console.log(project[0])
-   //console.log(project[1])
-alert('its me ')
+   //console.log(project[1])// doc ID  will be generated as this
+//alert('its me ')
     if (profile.firstName) {
-      firestore.collection('lists').doc(project[1]).set({
-        ...project[0],
-        createdAt:new Date()
+      firestore.collection('usersarray').doc('1').update({        
+        list_arr: firestore.FieldValue.arrayUnion(project.Mobile+'#'+project.firstName+' '+project.lastName+'#'+project.Dept),
+        srno: firestore.FieldValue.increment(1)
       //todo date juni method (displayon condition)
+      
       }).then(() => {
         dispatch({ type: 'CREATE_LISTS_SUCCESS' });
       }).catch(err => {
