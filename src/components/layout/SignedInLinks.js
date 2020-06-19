@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
+import Button from '@material-ui/core/Button';
 const SignedInLinks = (props) => {
   const { auth, profile } = props;
   //console.log(profile.id)
@@ -10,25 +11,15 @@ const SignedInLinks = (props) => {
   switch case
   approved user
   admin=x 
-
   */}
- 
   if (profile.role==="admin" ||profile.role==="owner"){
-    link=<li><NavLink to='/adminboard'><u>{props.profile.firstName}</u></NavLink></li>
-}else{link=<li><NavLink to='/userboard'><u>{props.profile.firstName?props.profile.firstName:'Add Profile '}</u></NavLink></li>}
+    link=<Button  ><NavLink to='/adminboard'><u style={{color: 'white'}}>{props.profile.firstName}</u></NavLink></Button>
+}else{link=<Button><NavLink to='/userboard'><u>{props.profile.firstName?props.profile.firstName:'Add Profile '}</u></NavLink></Button>}
   return (
     <div>
-     
-      <ul className="right">
-      <li><a style={{color:'white'}} href="https://samvad.gnfc.in/"> SAMVAD </a></li>  
-        {link}
-       
-      
-        <li><a onClick={props.signOut}>Logout</a></li>
-        {/*<li><NavLink to='/' className="btn btn-floating pink lighten-1">
-          
-  </NavLink></li>*/}
-      </ul>
+      {link}
+       {/* <NavLink to='/' className="btn btn-pink lighten-1">
+  </NavLink>*/}
     </div>
   )
 }

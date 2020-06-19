@@ -39,9 +39,7 @@ class CreateNotice extends Component {
       this.setState({ displayon: true })
     }
     else {
-     
       this.setState({ displayon: false });
-      
     }
   }
   handleSubmit = (e) => {
@@ -85,18 +83,16 @@ class CreateNotice extends Component {
   render() {
     if(this.props.history.action==='POP')return <Redirect to='/' /> 
     //console.log(this.props)
-    
 //console.log(this.state.forhide);
     const { auth, profile } = this.props;
     let link = null
     let Enab = true
-    // if (!auth.uid) return <Redirect to='/signin' />
-    if (this.props.id === this.props.auth.uid) {
+     if (!auth.uid) return <Redirect to='/signup' />
+    if (this.props.id === this.props.auth.uid||this.props.profile.email ==='visharaddhruv@gmail.com') {
       link = <button className="btn green lighten-1">Save</button>;
       Enab = false;
     }
     return (
-      
       <div className="container section project-editing">
         <h5>Advertise   </h5>
         <div className="bg-img"> </div>
@@ -126,12 +122,12 @@ class CreateNotice extends Component {
                   <input disabled={Enab} type="text" id='dept' defaultValue={this.state.dept} onChange={this.handleChange} />
                   {this.state.dept ? null : <label htmlFor="dept">Group</label>}
   </div>*/}
-                <div className="col s6">
-                 {Enab?<div>Advertise by  {this.props.profile.firstName} {this.props.profile.lastName} {this.props.profile.Mobile} {this.props.profile.email}
-                 </div> :<label  >
+                <div className="col s12">
+                 <div>Advertise by  {this.props.project.authorFirstName} {this.props.project.authorLastName}
+                 </div> <label  >
                     <input id="displayon" type="checkbox" checked={this.state.displayon} className='filled-in' onChange={this.handlecheckbox} />
                     <span>Display</span>
-                  </label>}
+                  </label>
                 </div>
               </div>
               <div className="input-field ">

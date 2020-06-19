@@ -1,6 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import CallIcon from '@material-ui/icons/Call';
 const NoticeSummary = ({ person }) => {
   //console.log(person)
   var splt = person.split("#");
@@ -14,8 +16,10 @@ const NoticeSummary = ({ person }) => {
                 }
   return (
     <div className='card'  >
-       <a href={link}> <button ><i className="tiny material-icons">call</i></button> </a>
-      <a href={walink}><button>Wa</button></a>
+       <a href={link}> <CallIcon/> </a>
+      <a href={walink}><WhatsAppIcon/></a>
+      
+      
       <span className="black-text" ><b>{splt[1]}</b> </span>{splt[2]}
       <div>
         

@@ -21,12 +21,14 @@ import CreatingMedia from './components/projects/CreateMedia'
 import ListBoard from './components/dashboard/ListBoard'
 import edit_dr from './components/projects/DrDetails'
 import Admin from './components/layout/Navbar2'
+
 class App extends Component {
   render() {
     return ( 
       <BrowserRouter>
         <div className="App">
-          <Navbar1 />         
+          <Navbar1 /> 
+               
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route exact path='/lists' component={ListBoard} />

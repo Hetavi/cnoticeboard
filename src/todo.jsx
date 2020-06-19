@@ -1,6 +1,4 @@
-Temp.js  : file read data from user and add as a array in 'list' collection-over
-how many documents in usersarray ? sohow in sign up =
-auth action: user add as a array with array union in list too 
-auth edit action (new): remove old data with arrayRemove and add new data with arrayUniion
-( in that case srno dose not  change)
-show data from usersarray in dir
+add like formula in media,b2b dir, helpers dir, 
+how to do ......
+ option 1 add Array of like with name
+ option 2 add rating 0 to 5 
