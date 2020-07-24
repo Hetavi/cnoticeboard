@@ -25,7 +25,12 @@ const projectReducer = (state = initState, action) => {
         case 'EDIT_DR_ERROR':
           //console.log('EDIT DR error');
           return state;
-
+          case 'CREATE_BUSINESS_SUCCESS':
+            //console.log('create project success');
+            return state;
+          case 'CREATE_BUSINESS_ERROR':
+            //console.log('create project error');
+            return state;
 
 
     default:

@@ -123,7 +123,7 @@ class CreateNotice extends Component {
                   {this.state.dept ? null : <label htmlFor="dept">Group</label>}
   </div>*/}
                 <div className="col s12">
-                 <div>Advertise by  {this.props.project.authorFirstName} {this.props.project.authorLastName}
+                 <div>Advertise by  {this.props.project?this.props.project.authorFirstName:'You'} {this.props.project?this.props.project.authorLastName:''} 
                  </div> <label  >
                     <input id="displayon" type="checkbox" checked={this.state.displayon} className='filled-in' onChange={this.handlecheckbox} />
                     <span>Display</span>

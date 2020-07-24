@@ -134,13 +134,14 @@ const links = props.auth.uid ? <SignedInLinks profile={props.profile}  /> : <Sig
         }}
       >
         <div className={classes.drawerHeader}>
+        
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-        {['/dash_dr#DOCTORS', '/dash_hosp#Tie Up Hosp.', '/lists#Directory','/create#My Advertise'].map((text, index) => (
+        {['/dash_dr#DOCTORS', '/dash_hosp#Tie Up Hospital', '/lists#Directory','/create#My Business Dir'].map((text, index) => (
           <ListItem button key={text} onClick={handleDrawerClose}>
           
             <Link to={text.split('#')[0]} key={index}><ListItemText primary={text.split('#')[1]} /></Link>
@@ -149,7 +150,7 @@ const links = props.auth.uid ? <SignedInLinks profile={props.profile}  /> : <Sig
       </List>
         <Divider />
         <List>
-        {['https://toms.gnfc.in#TOMS', 'https://mail.gnfc.in#MAIL BOX.', 'https://samvad.gnfc.in#SAMVAD','https://passbook.epfindia.gov.in/MemberPassBook/Login#PF passbook'].map((text, index) => (
+        {['https://toms.gnfc.in#TOMS', 'https://mail.gnfc.in#MAIL BOX', 'https://samvad.gnfc.in#SAMVAD','https://passbook.epfindia.gov.in/MemberPassBook/Login#PF passbook','https://unifiedportal-mem.epfindia.gov.in/memberinterface/#EPFO Member Login'].map((text, index) => (
           <ListItem button key={text} onClick={handleDrawerClose}>
            <a href={text.split('#')[0]} key={index}><ListItemText primary={text.split('#')[1]} /></a>
          

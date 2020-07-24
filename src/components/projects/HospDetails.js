@@ -122,8 +122,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{
-    collection: 'projects'
-  }])
+  connect(mapStateToProps, mapDispatchToProps)
 )(HospDetails)

@@ -20,13 +20,17 @@ export const generateMedia = (project) => {
     } else {
       //todo  
      
-      firestore.collection('media').doc().set({
+      firestore.collection('media').add({
         ...project,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
         createdAt: new Date()
-      }).then(() => {
+      }).then(function(docRef) {
+        alert('kfdjfkljds'+docRef.id)
+        console.log("Document written with ID: ", docRef.id);
+        dispatch({ type: 'CREATE_MEDIA_SUCCESS' });
+    }).then(() => {
         dispatch({ type: 'CREATE_MEDIA_SUCCESS' });
       }).catch(err => {
         alert('fail')
