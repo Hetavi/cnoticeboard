@@ -1,8 +1,9 @@
 import React from 'react'
-import moment from 'moment'
+
 import { Link } from 'react-router-dom'
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import CallIcon from '@material-ui/icons/Call';
+
 const NoticeSummary = ({ person }) => {
   //console.log(person)
   var splt = person.split("#");
@@ -19,9 +20,10 @@ const NoticeSummary = ({ person }) => {
        <a href={link}> <CallIcon/> </a>
       <a href={walink}><WhatsAppIcon/></a>
       
-      <Link to={'/createbusiness/'+splt[0]}>
+      <Link to={'/businessdata/'+splt[0]}>
       <b>{splt[0]}</b>{splt[2]}
      </Link>
+    
     </div >
   )
 }

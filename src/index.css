@@ -10,11 +10,13 @@ body {
  /* background: url(/img/board.jpg) no-repeat;*/
   background-size: 100% 110%;
   background-position: 0% 0%;
-  background-color: #ffffff;
+ 
   min-height: 99%;
 }
+.carousel {
+  max-height: 220px
+}
 
-  
 .bg-img{
    /* background: url(/img/board.jpg) no-repeat;*/
 }

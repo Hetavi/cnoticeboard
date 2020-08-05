@@ -38,7 +38,7 @@ class BusinessDash extends Component {
         </div>
         <div className="row">
           <div className="col s12 m12 ">
-        list
+      
         {  <BusinessList list={mylist}/>}
           </div>
         </div>

@@ -1,7 +1,8 @@
 import React, { Component, useState, useEffect } from 'react'
 import ReactDOM from "react-dom";
 //import UserDash from './userDash0'
-import UserList0 from '../projects/businesscard'
+import BusinessCard from '../projects/businesscard'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { compose } from 'redux'
@@ -56,13 +57,14 @@ let ListBoard = (props) => {
                         <i className="material-icons prefix">search</i>
                         <input id="search1" defaultValue={value} type="text" onChange={handleChange} />
                     </div>
-                    <div className='col s4'><button onClick={all}>All</button></div>
+                   { /*<div className='col s4'><button onClick={all}>All</button></div>*/}
                 </div>
-                sdsadas
+                <Link to ={'/businessdata/1'}> <button>Add New Data</button></Link>
+    
                 {dr_array.map((person, index) => (
                     <div>
                     
-                        <UserList0 person={person} />
+                        <BusinessCard person={person} />
                     </div>
                 ))}
             </div>

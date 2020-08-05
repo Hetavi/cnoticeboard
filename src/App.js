@@ -22,7 +22,7 @@ import ListBoard from './components/dashboard/ListBoard'
 import edit_dr from './components/projects/DrDetails'
 import Admin from './components/layout/Navbar2'
 import Business from './components/dashboard/BusinessDash'
-import CreateBusiness from './components/projects/CreateBusiness'
+import BusinessData from './components/projects/CreateBusiness'
 class App extends Component {
   render() {
     return ( 
@@ -54,7 +54,7 @@ class App extends Component {
             <Route path='/userboard' component={Admin} />
             <Route exact path='/old' component={MediaDash} />
             <Route path='/business' component={Business} />
-            <Route path='/createbusiness/:id' component={CreateBusiness}/>
+            <Route path='/businessdata/:id' component={BusinessData}/>
           </Switch>
         </div>
       </BrowserRouter>

@@ -6,23 +6,19 @@ import { generateBusiness } from '../../store/actions/businessActions'
 import FileUploader from "react-firebase-file-uploader";
 //import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import M from "materialize-css";
-import one from "./imgs/1.jpg";
-import two from "./imgs/2.jpg";
-import three from "./imgs/3.jpg";
 class DataEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bId: this.props.data ? this.props.data.bId :null,
-      bName: this.props.data ? this.props.data.bName : '',
-      bProducts: this.props.data ? this.props.data.bProducts : '',
-      bOwner: this.props.data ? this.props.data.bOwner : '',
-      bAddress: this.props.data ? this.props.data.bAddress : '',
-      bPhone: this.props.data ? this.props.data.bPhone : '',
+      bId: this.props.data? this.props.data.id : null,
+      bName: this.props.data? this.props.data.proj.bName : '',
+      bProducts: this.props.data? this.props.data.proj.bProducts : '',
+      bOwner: this.props.data? this.props.data.proj.bOwner : '',
+      bAddress: this.props.data? this.props.data.proj.bAddress : '',
+      bPhone: this.props.data? this.props.data.proj.bPhone : '',
       //bAuthorFirstName:this.props.profile.firstName,
-      filenames: [],
-      downloadURLs: [],
+      filenames: this.props.data? this.props.data.proj.filenames : [],
+      downloadURLs: this.props.data? this.props.data.proj.downloadURLs : [],
       isUploading: false,
       uploadProgress: 0
     }
@@ -43,70 +39,82 @@ class DataEntry extends Component {
     }
   }
   handleUploadStart = () =>
-  this.setState({
-    isUploading: true,
-    uploadProgress: 0
-  });
-handleProgress = progress =>
-  this.setState({
-    uploadProgress: progress
-  });
-handleUploadError = error => {
-  this.setState({
-    isUploading: false
-    // Todo: handle error
-  });
-  console.error(error);
-};
-handleUploadSuccess = async filename => {
-  const downloadURL = await firebase
-    .storage()
-    .ref("images")
-    .child(filename)
-    .getDownloadURL();
-  this.setState(oldState => ({
-    filenames: [...oldState.filenames, filename],
-    downloadURLs: [...oldState.downloadURLs, downloadURL],
-    uploadProgress: 100,
-    isUploading: false
-  }));
-};
-back = (e) => {
-  e.preventDefault();
-  this.props.history.push('/');
-}
+    this.setState({
+      isUploading: true,
+      uploadProgress: 0
+    });
+  handleProgress = progress =>
+    this.setState({
+      uploadProgress: progress
+    });
+  handleUploadError = error => {
+    this.setState({
+      isUploading: false
+      // Todo: handle error
+    });
+    console.error(error);
+  };
+  handleUploadSuccess = async filename => {
+    const downloadURL = await firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL();
+    this.setState(oldState => ({
+      filenames: [...oldState.filenames, filename],
+      downloadURLs: [...oldState.downloadURLs, downloadURL],
+      uploadProgress: 100,
+      isUploading: false
+    }));
+  };
+  back = (e) => {
+    e.preventDefault();
+    this.props.history.push('/');
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.generateBusiness(this.state);
-   alert('ok')
+    console.log(this.state)
+    alert('Submited')
     //this.props.history.push('/');
   }
-  componentDidMount() {
-    const options = {
-      duration: 300,
-      onCycleTo: () => {
-        console.log("New Slide");
-      }
-    };
-    M.Carousel.init(this.Carousel, options);
+  deletePhoto = (e) => {
+    e.preventDefault();
+    var fn = this.state.filenames[e.target.name]
+    console.log(fn)
+    console.log(this.state.filenames)
+    this.setState({
+      filenames: this.state.filenames.filter(function (person) {
+        return (person !== fn)
+      })
+    })
+    var dn = this.state.downloadURLs[e.target.name]
+    console.log(dn)
+    this.setState({
+      downloadURLs: this.state.downloadURLs.filter(function (url) {
+        return (url !== dn)
+      })
+    })
+    console.log(this.state.filenames)
+    firebase
+      .storage()
+      .ref("images")
+      .child(fn).delete();
   }
   render() {
     //if(this.props.history.action==='POP')return <Redirect to='/' /> 
-    console.log(this.props)
+    //console.log(this.props.data.downloadURLs.length)
     console.log(this.state);
     const { auth, profile } = this.props;
     let link = null
     let Enab = true
-   
-     link = <button className="btn green lighten-1">Save</button>;
-      Enab = false;
-    
-    if(this.state.bName){
+    link = <button className="btn green lighten-1" onClick={this.handleSubmit}>Save</button>;
+    Enab = false;
     return (
       <div className="container section project-editing">
         <h5>Details:  </h5>
         <div className="bg-img"> </div>
-        <form className="black" onSubmit={this.handleSubmit}>
+        <form className="black" >
           <div className="card z-depth-0">
             <div >
               {/* <div className="card-content" style={{ padding: '2px' }}>
@@ -127,22 +135,6 @@ back = (e) => {
                 />
               </div>
     </div>*/}
-              <div
-                ref={Carousel => {
-                  this.Carousel = Carousel;
-                }}
-                className="carousel"
-              >
-                <a className="carousel-item">
-                  <img alt="1" src={one} />
-                </a>
-                <a className="carousel-item">
-                  <img alt="2" src={two} />
-                </a>
-                <a className="carousel-item">
-                  <img alt="3" src={three} />
-                </a>
-              </div>
               <div className='row'>
                 {/* <div className="input-field col s3 ">
                   <input disabled={Enab} type="text" id='dept' defaultValue={this.state.dept} onChange={this.handleChange} />
@@ -186,16 +178,19 @@ back = (e) => {
                   name="image-uploader"
                   randomizeFilename
                   storageRef={firebase.storage().ref("images")}
-                  onUploadStart={this.handleUploadStart}
+                  // onUploadStart={this.handleUploadStart}
                   onUploadError={this.handleUploadError}
                   onUploadSuccess={this.handleUploadSuccess}
                   onProgress={this.handleProgress}
                   multiple
                 />
                 {/* <p>Progress: {this.state.uploadProgress}-Filenames: {this.state.filenames.join(", ")}</p>
-           */}   <div>
+           */}  <div className='row'>
                   {this.state.downloadURLs.map((downloadURL, i) => {
-                    return <img class="responsive-img" key={i} src={downloadURL} />;
+                    return (<div className="col s3 m12">
+                      <img style={{ width: '75%' }} class="responsive-img" key={i} src={downloadURL} />
+                      <br /><button className="btn pink lighten-1" name={i} onClick={this.deletePhoto} >Delete</button>
+                    </div>);
                   })}
                 </div>
               </div>
@@ -206,7 +201,7 @@ back = (e) => {
           </div>
         </form>
       </div>
-    )}else {return <h3>Data not availble</h3>}
+    )
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -215,7 +210,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default compose(connect(null, mapDispatchToProps),
-  )
+)
   (DataEntry)
-
- 

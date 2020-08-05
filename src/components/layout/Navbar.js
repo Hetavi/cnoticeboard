@@ -141,7 +141,7 @@ const links = props.auth.uid ? <SignedInLinks profile={props.profile}  /> : <Sig
         </div>
         <Divider />
         <List>
-        {['/dash_dr#DOCTORS', '/dash_hosp#Tie Up Hospital', '/lists#Directory','/create#My Business Dir'].map((text, index) => (
+        {['/dash_dr#DOCTORS', '/dash_hosp#Tie Up Hospital', '/lists#Directory','/business#Business Dir'].map((text, index) => (
           <ListItem button key={text} onClick={handleDrawerClose}>
           
             <Link to={text.split('#')[0]} key={index}><ListItemText primary={text.split('#')[1]} /></Link>
